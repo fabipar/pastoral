@@ -1,22 +1,13 @@
 <?php
-$data = json_decode(file_get_contents("php://input"), true);
-$archivo = basename($data["archivo"]);
-$origen = isset($data["origen"]) && $data["origen"] === "papelera" ? "papeleraevangelio" : "respaldoevangelio";
+$archivo = $_GET['archivo'] ?? '';
+$desdePapelera = isset($_GET['papelera']);
 
-$ruta_origen = __DIR__ . "/$origen/$archivo";
-$ruta_destino = __DIR__ . "/evangelio.json";
+$ruta_origen = $desdePapelera ? 'papelera_evangelio/' . $archivo : 'respaldos_evangelio/' . $archivo;
+$ruta_destino = 'evangelio.json';
 
-if (!file_exists($ruta_origen)) {
-  http_response_code(404);
-  echo "Archivo no encontrado.";
-  exit;
+if (file_exists($ruta_origen)) {
+  copy($ruta_origen, $ruta_destino);
+  echo "✅ Evangelio restaurado desde " . ($desdePapelera ? 'papelera' : 'respaldos') . ".";
+} else {
+  echo "❌ Archivo no encontrado.";
 }
-
-if (!copy($ruta_origen, $ruta_destino)) {
-  http_response_code(500);
-  echo "Error al restaurar el archivo.";
-  exit;
-}
-
-echo "✅ Archivo restaurado exitosamente desde '$origen'.";
-

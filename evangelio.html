@@ -2,83 +2,69 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Evangelio Semanal</title>
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Evangelio Semanal | Pastoral Social</title>
+  <link rel="stylesheet" href="FORM_ENCAB_FOOT.css" />
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background-color: #f5f5f5;
-      color: #333;
+    .evangelio {
+      max-width: 800px;
+      margin: 120px auto 60px;
+      padding: 30px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     }
-    header {
-      background-color: #00695c;
-      color: white;
-      padding: 15px;
+
+    .evangelio h2 {
+      color: #00796b;
+      margin-bottom: 15px;
       text-align: center;
     }
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-    .evangelio {
-      max-width: 700px;
-      margin: 40px auto;
-      background: white;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    .evangelio h2 {
-      color: #2e7d32;
-    }
+
     .evangelio p {
       line-height: 1.6;
-      margin-top: 10px;
+      font-size: 18px;
+      color: #333;
     }
-    footer {
+
+    .evangelio .fecha {
       text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      background-color: #eee;
-      margin-top: 60px;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    @media (max-width: 600px) {
+      .evangelio {
+        margin: 100px 10px 60px;
+        padding: 20px;
+      }
     }
   </style>
 </head>
-
-
-
-
-
 <body>
-  <header>
-    <h1>📖 Evangelio de la Semana</h1>
-  </header>
+  <header-component></header-component>
 
-  <section class="evangelio" data-aos="fade-up">
-    <p><strong>Fecha:</strong> <span id="fecha">Cargando...</span></p>
-    <h2 id="titulo">Cargando título...</h2>
-    <p id="contenido">Cargando contenido...</p>
-  </section>
+  <main class="evangelio">
+    <h2 id="titulo"></h2>
+    <div class="fecha" id="fecha"></div>
+    <p id="contenido"></p>
+  </main>
 
-  <footer>
-    &copy; 2025 Pastoral Social Suroriente Colombiano
-  </footer>
+  <footer-component></footer-component>
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="componentes/encabezado.js"></script>
+  <script src="componentes/footer.js"></script>
   <script>
-    AOS.init();
-    fetch("evangelio.json")
-      .then(res => res.json())
+    fetch('evangelio.json')
+      .then(response => response.json())
       .then(data => {
-        document.getElementById("fecha").textContent = data.fecha;
-        document.getElementById("titulo").textContent = data.titulo;
-        document.getElementById("contenido").innerHTML = data.contenido.replace(/\n/g, '<br>');
+        document.getElementById('titulo').textContent = data.titulo;
+        document.getElementById('fecha').textContent = '📅 ' + data.fecha;
+        document.getElementById('contenido').textContent = data.contenido;
       })
-      .catch(() => {
-        document.getElementById("contenido").textContent = "Error al cargar el evangelio.";
+      .catch(error => {
+        document.getElementById('contenido').textContent = 'No se pudo cargar el evangelio.';
+        console.error('Error al cargar el evangelio:', error);
       });
   </script>
 </body>

@@ -1,18 +1,15 @@
 <?php
-$dir = __DIR__ . "/papeleraevangelio/";
-$archivos = [];
+$archivo = $_GET['archivo'] ?? '';
+$ruta_origen = 'respaldos_evangelio/' . $archivo;
+$ruta_destino = 'papelera_evangelio/' . $archivo;
 
-if (is_dir($dir)) {
-  foreach (scandir($dir) as $archivo) {
-    if (is_file($dir . $archivo) && pathinfo($archivo, PATHINFO_EXTENSION) === "json") {
-      $archivos[] = $archivo;
-    }
-  }
-
-  usort($archivos, function($a, $b) use ($dir) {
-    return filemtime($dir . $b) - filemtime($dir . $a);
-  });
+if (!file_exists('papelera_evangelio')) {
+  mkdir('papelera_evangelio', 0777, true);
 }
 
-header("Content-Type: application/json");
-echo json_encode($archivos);
+if (file_exists($ruta_origen)) {
+  rename($ruta_origen, $ruta_destino);
+  echo "🗑️ Respaldado movido a papelera.";
+} else {
+  echo "❌ Archivo no encontrado.";
+}

@@ -1,5 +1,5 @@
 <?php
-$directorio = 'respaldos_evangelio';
+$directorio = 'papelera_evangelio';
 $resultado = [];
 
 if (is_dir($directorio)) {
