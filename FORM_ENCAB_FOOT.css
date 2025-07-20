@@ -128,6 +128,124 @@ body {
   }
 }
 
+/* Estructura del submenú */
+.submenu {
+  position: relative;
+}
+
+.submenu-items {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+  z-index: 1000;
+  padding: 10px 0;
+  border-radius: 8px;
+}
+
+.submenu-items li {
+  list-style: none;
+}
+
+.submenu-items a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #333;
+  transition: background 0.3s ease;
+}
+
+.submenu-items a:hover {
+  background: #f0f0f0;
+}
+
+/* Mostrar el submenú al pasar el cursor */
+.submenu:hover .submenu-items {
+  display: block;
+}
+
+/* Para el menú responsive (hamburguesa) */
+@media (max-width: 768px) {
+  .main-nav ul {
+    flex-direction: column;
+  }
+
+  .submenu-items {
+    position: static;
+    box-shadow: none;
+    padding-left: 15px;
+  }
+
+  .submenu:hover .submenu-items {
+    display: block;
+  }
+}
+.submenu {
+  position: relative;
+}
+
+.submenu-items {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+  z-index: 999;
+  padding: 10px 0;
+  border-radius: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.submenu-items li {
+  list-style: none;
+}
+
+.submenu-items a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #333;
+  transition: background 0.3s ease;
+}
+
+.submenu-items a:hover {
+  background: #f0f0f0;
+}
+
+.submenu.open .submenu-items {
+  display: block;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .main-nav ul {
+    flex-direction: column;
+  }
+
+  .submenu-items {
+    position: static;
+    box-shadow: none;
+    background: transparent;
+    padding-left: 20px;
+  }
+
+  .submenu-items a {
+    padding: 8px 10px;
+  }
+}
+
+
+
+
+
+
+
+
 /* ---------------- CONTENIDO ---------------- */
 .contenido {
   padding: 2rem 1.5rem;

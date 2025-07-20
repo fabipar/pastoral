@@ -871,3 +871,96 @@ blockquote {
     right: 15px;
   }
 }
+
+    .submenu {
+      position: relative;
+    }
+    .submenu-items {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      min-width: 200px;
+      z-index: 999;
+      padding: 10px 0;
+    }
+    .submenu.open .submenu-items {
+      display: block;
+    }
+    .submenu-items li {
+      list-style: none;
+    }
+    .submenu-items a {
+      display: block;
+      padding: 10px 20px;
+      color: #333;
+      text-decoration: none;
+    }
+    .submenu-items a:hover {
+      background-color: #f0f0f0;
+    }
+    @media (max-width: 768px) {
+      .main-nav {
+        display: none;
+        flex-direction: column;
+      }
+      .main-nav.active {
+        display: flex;
+      }
+      .main-nav ul {
+        flex-direction: column;
+        gap: 0;
+      }
+      .submenu-items {
+        position: static;
+        box-shadow: none;
+        background: transparent;
+      }
+    }
+    /* Submenú oculto por defecto */
+.submenu-items {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  list-style: none;
+  z-index: 1000;
+}
+
+/* Mostrar submenú al hacer clic */
+.submenu.open .submenu-items {
+  display: block;
+}
+
+/* Estilo para los enlaces del submenú */
+.submenu-items li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.submenu-items li a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Asegura que los <li> del menú principal no interfieran */
+.main-nav ul {
+  position: relative;
+}
+
+.submenu {
+  position: relative;
+}
+
+/* Para evitar que el submenú se muestre en línea */
+.submenu-items {
+  min-width: 200px;
+}

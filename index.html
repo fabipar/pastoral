@@ -3,94 +3,136 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="author" content="fabian leonardo paramo" />
-  <meta name="" content="Pastoral Social Regional Suroriente Colombiano - Misión, Visión y Principios" />
-  <title>PASTORAL SOCIAL REGIONAL SURORIENTE COLOMBIANO</title>
-  <link rel="icon" href="./IMAGENES_PAGINA/LOGO PATORAL AUTORIZADO EDITADO.png" type="image/x-icon">  <link rel="stylesheet" href="index.css" />
+  <meta name="author" content="Pastoral Social Suroriente" />
+  <title>Inicio | Pastoral Social Regional Suroriente Colombiano</title>
+  <link rel="icon" href="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" type="image/x-icon">
+  <link rel="stylesheet" href="index.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* SUBMENÚ */
+    .has-submenu {
+      position: relative;
+    }
+
+    .has-submenu .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      display: none;
+      list-style: none;
+      margin: 0;
+      padding: 0.5rem 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 999;
+      min-width: 180px;
+    }
+
+    .has-submenu:hover .submenu {
+      display: block;
+    }
+
+    .submenu li a {
+      display: block;
+      padding: 0.6rem 1rem;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .submenu li a:hover {
+      background-color: #f0f0f0;
+      color: #007B7F;
+    }
+
+    /* Móvil */
+    @media (max-width: 768px) {
+      .has-submenu .submenu {
+        position: static;
+        box-shadow: none;
+        background-color: transparent;
+      }
+      .submenu li a {
+        padding-left: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Encabezado -->
- <header class="navbar">
+
+  <!-- ENCABEZADO -->
+  <header class="navbar">
     <div class="nav-logo">
-      <img src="./IMAGENES_PAGINA/LOGO PATORAL AUTORIZADO EDITADO.png" alt="Logo">
+      <img src="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" alt="Logo">
       <div class="nav-text">
         <span class="titulo">Pastoral Social Regional</span><br>
         <span class="subtitulo">Suroriente Colombiano</span>
       </div>
     </div>
-
-    <!-- Botón hamburguesa -->
- <!-- Botón hamburguesa -->
-      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
-
-      <nav class="main-nav">
-        <ul>
-          <li><a href="#INICIO">Inicio</a></li>
-          <li><a href="proyectos.html">Proyectos</a></li>
-          <li><a href="noticias.html">Noticias</a></li>
-          <li><a href="QUIENESSOMOS.html">Quienes Somos</a></li>
-          <li><a href="#DONACION">Donaciones</a></li>
-          <li><a href="#REDESSOCIALES">Contacto</a></li>
-        </ul>
-      </nav>
-    </div>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#INICIO">Inicio</a></li>
+        <li><a href="proyectos.html">Proyectos</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li class="has-submenu">
+          <a href="#QUIENESSOMOS">Quienes Somos ▾</a>
+          <ul class="submenu">
+            <li><a href="SERVICIOS.html">Servicios</a></li>
+            <li><a href="evangelio.html">Evangelio Semanal</a></li>
+            <li><a href="QUIENESSOMOS.html">Quienes Somos</a></li>
+            </ul>
+        </li>
+        <li><a href="#DONACION">Donaciones</a></li>
+        <li><a href="#REDESSOCIALES">Contacto</a></li>
+      </ul>
+    </nav>
   </header>
 
+  <!-- Botón flotante -->
+  <a href="#DONACION" class="donate-button" aria-label="Donar ahora">Donar</a>
 
-<!-- Botón corazón flotante -->
- <a href="#DONACION" class="donate-button" aria-label="Donar ahora">
-    ❤️ Donar
-  </a>
-<!-- Fin de la sección Boton corazon flotante-->
-
-    <!-- Contenido principal -->
-     <section id="INICIO"></section>
+  <!-- Contenido principal -->
+  <section id="INICIO"></section>
   <main class="contenido">
     <p class="intro">
       Transmitimos esta virtud al interactuar con respeto, honestidad y lealtad la cual nos compromete a ser transparentes tanto con nuestro cliente como con los grupos de interés.
     </p>
 
-    <section class="bloque">
+    <!-- Misión -->
+    <section id="mision" class="bloque">
       <h2>Misión</h2>
-      <p>
-        La pastoral social Caritas suroriente colombiano, fundamentada en el evangelio,
-        la doctrina social de la iglesia católica, y apoyada en las ciencias sociales,
-        desde un enfoque diferencial, está comprometido en:
-      </p>
+      <p>La pastoral social Caritas suroriente colombiano, fundamentada en el evangelio, la doctrina social de la iglesia católica, y apoyada en las ciencias sociales, desde un enfoque diferencial, está comprometido en:</p>
       <ul>
-        <li>Acompañar procesos locales y regionales que posibiliten el rescate de la dignidad de la persona, el establecimiento de la paz, consolidada en la verdad, la justicia participativa y la convivencia pacífica.</li>
-        <li>Fomentar el desarrollo integral de la persona, el cuidado de la creación e incidir en las decisiones de las entidades del estado, las organizaciones no gubernamentales, organizaciones sociales y empresariales, frente a los empobrecidos, excluidos y la población vulnerable.</li>
+        <li>Acompañar procesos locales y regionales que posibiliten el rescate de la dignidad de la persona...</li>
+        <li>Fomentar el desarrollo integral de la persona, el cuidado de la creación e incidir en decisiones...</li>
       </ul>
     </section>
 
-    <section class="bloque">
+    <!-- Visión -->
+    <section id="vision" class="bloque">
       <h2>Visión</h2>
-      <p>
-        La región del suroriente colombiano, cuenta con una sociedad equitativa, justa, participativa, solidaria, que salvaguarda la creación cimentada en el derecho a la tierra y respeto de los diversos territorios.
-      </p>
-      <p>
-        La pastoral social regional del suroriente colombiano, es un espacio de diálogo y construcción colectiva, que fortalece la evangelización de lo social, se compromete en el reconocimiento y promoción de la dignidad de las personas y comunidades, y genera procesos de paz, justicia y desarrollo integral.
-      </p>
+      <p>La región del suroriente colombiano cuenta con una sociedad equitativa, justa, participativa, solidaria...</p>
+      <p>La pastoral social regional del suroriente colombiano es un espacio de diálogo y construcción colectiva...</p>
     </section>
 
-    <section class="bloque">
+    <!-- Principios -->
+    <section id="principios" class="bloque">
       <h2>Principios</h2>
       <h3>1.1 Principio rector PSR</h3>
-      <p>El Compendio de la Doctrina Social de la Iglesia Católica traza los caminos que hay que recorrer para edificar una sociedad reconciliada y armonizada en la justicia y en el amor, que se anticipa en la historia, de modo incipiente y prefigurado</p>
+      <p>El Compendio de la Doctrina Social de la Iglesia Católica traza los caminos...</p>
       <blockquote>
         <strong>LA DIGNIDAD HUMANA</strong><br>
-        “estos principios tienen un carácter general y fundamental, porque se refieren a la realidad social en su conjunto: Desde las relaciones interpersonales caracterizadas por la proximidad y la inmediatez, hasta aquellas mediadas por la política, por la economía y por el derecho; desde las relaciones entre comunidades o grupos hasta las relaciones entre los pueblos y las Naciones” <br>
+        “Estos principios tienen un carácter general y fundamental...<br>
         <em>(Conferencia Episcopal de Colombia, 2005, 108)</em>
       </blockquote>
 
       <h3>1.2 Principios institucionales</h3>
       <ul>
-        <li><strong>Bien Común:</strong> En estos tiempos, pensar y actuar en pro de la dignidad humana, pasa por pensar en el otro, en este sentido, el bien común se plantea como “el conjunto de condiciones de la vida social que hace posible a las asociaciones y a cada uno de sus miembros, el logro más pleno y más fácil de la propia perfección” (conferencia episcopal de Colombia 2005 109)</li>
-        <li><strong>Destino Universal de los Bienes:</strong> La raíz, el fundamento del destino universal de los bienes, está en que Dios ha entregado la tierra a todo el género humano, sin excluir a nadie, ni privilegiar a ninguno en tal sentido, Pastoral Social Suroriente Colombiano, ha de trabajar con decisión en el acompañamiento y formación de las comunidades, para que estas a su vez, generen procesos de incidencia política, llegando en primer lugar a aportar en la transformación de las prácticas excluyentes y poco equitativas, y en segundo término, a que sean las mismas comunidades las protagonistas de su desarrollo por medio de su empoderamiento.</li>
-        <li><strong>Subsidiaridad:</strong> Actuar desde el principio de subsidiaridad, corresponde como Pastoral Social al respeto y la promoción efectiva tanto de la persona como de la familia; implica la salvaguarda de los derechos de los seres humanos y de las minorías; propender por la descentralización burocrática y administrativa; pero sobre todo lograr que la o el ciudadano se sienta parte activa de la realidad política y social del país. Además según este principio todas las sociedades de orden superior, deben ponerse en actitud de ayuda (subsidium), de apoyo, de promoción y de desarrollo respecto de sociedad menores y más necesitadas.</li>
-        <li><strong>Participación:</strong> La participación puede lograrse en todas las relaciones posibles entre el ciudadano y todas las instituciones, para ello, se debe prestar particular atención a los contextos históricos y sociales, en los que la participación debería actuarse verdaderamente. La superación de los obstáculos culturales, jurídicos y sociales que con frecuencia se interponen como verdaderas barrera, a la participación solidaria de los ciudadanos en los destinos de la propia comunidad, requiere una obra informativa y educativa.</li>
-        <li><strong>Solidaridad:</strong> “El principio de solidaridad implica, que hombres y mujeres de nuestro tiempo, cultiven aún más la conciencia de la deuda que tienen con la sociedad en la cual están inmersos: Son deudores de aquellas condiciones que facilitan la existencia humana, así como del patrimonio, indivisible e indispensable, constituido por la cultura, el conocimiento científico y tecnológico; los bienes materiales e inmateriales, y todo aquello que la actividad humana ha producido. Semejante deuda se salda con las diversas manifestaciones de la actuación social, de manera que el camino de los hombres no se interrumpa, sino que permanezca abierto para las generaciones presentes y futuras, llamadas unas y otras a compartir en la solidaridad (Conferencia Episcopal de Colombia, 2005 127).</li>
+        <li><strong>Bien Común:</strong> En estos tiempos...</li>
+        <li><strong>Destino Universal de los Bienes:</strong> ...</li>
+        <li><strong>Subsidiaridad:</strong> ...</li>
+        <li><strong>Participación:</strong> ...</li>
+        <li><strong>Solidaridad:</strong> ...</li>
       </ul>
     </section>
   </main>
@@ -102,53 +144,34 @@
       <div class="sponsor-logos">
         <div class="sponsor"><img src="./IMAGENES_PAGINA/MISEREOR.png" alt="Misereor"></div>
         <div class="sponsor"><img src="./IMAGENES_PAGINA/UNION EUROPEA.png" alt="Union Europea"></div>
-
-        <!-- Duplicados para efecto continuo -->
-        <div class="sponsor"><img src="./IMAGENES_PAGINA/MISEREOR.png" alt="Patrocinador 1"></div>
-        <div class="sponsor"><img src="./IMAGENES_PAGINA/UNION EUROPEA.png" alt="Patrocinador 2"></div>
-
       </div>
     </div>
   </section>
 
+  <!-- Aliados -->
   <section class="sponsors">
-    <h3>Aliados Estrategicos</h3>
+    <h3>Aliados Estratégicos</h3>
     <div class="sponsor-logos-wrapper">
       <div class="sponsor-logos">
-        <div class="sponsor"><img src="./IMAGENES_PAGINA/CORPORACION VINCULOS.png" alt="Corporacion Vinculos"></div>
-        <div class="sponsor"><img src="./IMAGENES_PAGINA/MOE.png" alt="Mision Electoral"></div>
-          <div class="sponsor"><img src="./IMAGENES_PAGINA/PNDP.png" alt="Red Nacional de paz"></div>
-        <div class="sponsor"><img src="./IMAGENES_PAGINA/descarga.jpg" alt="Corporinoquia"></div>
-                <!-- Duplicados para efecto continuo -->
-        <div class="sponsor"><img src="./IMAGENES_PAGINA/CORPORACION VINCULOS.png" alt="Corporacion Vinculos"></div>
-        <div class="sponsor"><img src="./IMAGENES_PAGINA/MOE.png" alt="Mision Electoral"></div>
-          <div class="sponsor"><img src="./IMAGENES_PAGINA/PNDP.png" alt="Red Nacional de paz"></div>
+        <div class="sponsor"><img src="./IMAGENES_PAGINA/CORPORACION VINCULOS.png" alt="Corporación Vínculos"></div>
+        <div class="sponsor"><img src="./IMAGENES_PAGINA/MOE.png" alt="MOE"></div>
+        <div class="sponsor"><img src="./IMAGENES_PAGINA/PNDP.png" alt="PNDP"></div>
         <div class="sponsor"><img src="./IMAGENES_PAGINA/descarga.jpg" alt="Corporinoquia"></div>
       </div>
     </div>
   </section>
 
-<!-- Sección Quienes Somos -->
- <section id="QUIENESSOMOS"></section>
-  <section class="contacto">
+  <!-- Contacto -->
+  <section id="contacto" class="contacto">
     <div class="container">
       <h1>Contáctanos</h1>
-      <p>¿Tienes alguna inquietud o deseas comunicarte con nosotros? Completa el siguiente formulario o usa los datos de contacto.</p>
-
-      <!-- Formulario -->
-<form action="#" method="post" class="formulario-contacto" id="form-contacto">
-  <input type="text" name="nombre" placeholder="Nombre completo" required />
-  <input type="email" name="email" placeholder="Correo electrónico" required />
-  <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje" required></textarea>
-  <button type="submit">Enviar Mensaje</button>
-</form>
-
-<!-- Mensaje de éxito (inicialmente oculto) -->
-<div id="mensaje-exito" style="display: none; color: green; font-weight: bold; margin-top: 1rem;">
-  ¡Mensaje enviado con éxito!
-</div>
-
-
+      <p>¿Tienes alguna inquietud o deseas comunicarte con nosotros? Completa el formulario o usa los datos de contacto.</p>
+      <form class="formulario-contacto">
+        <input type="text" placeholder="Nombre completo" required>
+        <input type="email" placeholder="Correo electrónico" required>
+        <textarea rows="5" placeholder="Escribe tu mensaje" required></textarea>
+        <button type="submit">Enviar Mensaje</button>
+      </form>
       <div class="info-contacto">
         <h3>Información de contacto</h3>
         <p>📍 Dirección: CLL 44 A No 45-55</p>
@@ -157,169 +180,82 @@
       </div>
     </div>
   </section>
-    <!-- Fin de la sección de Quienes Somos -->
-<!-- SECCION DONACION -->
-<section id="DONACION"></section>
-<section class="payment-section">
-  <div class="container">
-    <h2>Donar para los proyectos de Pastoral Social</h2>
-    <p>Tu contribución es esencial para continuar con los proyectos que transforman vidas. Por favor, elige tu monto y método de pago.</p>
 
-    <section class="seccion-donacion">
-      <h1>Realiza una Donación</h1>
-      <p class="mensaje-donacion">
-        Ayuda a una familia Colombiana a tener una mejor vida.
-      </p>
-      <div class="datos-bancarios">
-        <p><strong>Banco:</strong> Caja Social</p>
-        <p><strong>Tipo de cuenta:</strong> Ahorros</p>
-        <p><strong>Número de cuenta:</strong>
-          <span class="cuenta-con-reloj">
-            <span class="reloj-icono">⏱️</span>
-            <span class="cuenta-animada">24050743036</span>
-          </span>
-        </p>
+  <!-- Donación -->
+  <section id="DONACION" class="payment-section">
+    <div class="container">
+      <h2>Donar para los proyectos de Pastoral Social</h2>
+      <p>Tu contribución es esencial para continuar con los proyectos que transforman vidas.</p>
+      <div class="seccion-donacion">
+        <h1>Realiza una Donación</h1>
+        <p class="mensaje-donacion">Ayuda a una familia Colombiana a tener una mejor vida.</p>
+        <div class="datos-bancarios">
+          <p><strong>Banco:</strong> Caja Social</p>
+          <p><strong>Tipo de cuenta:</strong> Ahorros</p>
+          <p><strong>Número de cuenta:</strong>
+            <span class="cuenta-con-reloj">
+              <span class="reloj-icono">⏱️</span>
+              <span class="cuenta-animada">24050743036</span>
+            </span>
+          </p>
+        </div>
       </div>
-    </section>
-
-    <div class="payment-options">
-      <div class="payment-method">
-        <label for="amount">Monto a donar:</label>
-        <input type="number" id="amount" name="amount" placeholder="Ej. 100" required>
+      <div class="payment-options">
+        <div class="payment-method">
+          <label for="amount">Monto a donar:</label>
+          <input type="number" id="amount" name="amount" placeholder="Ej. 100" required>
+        </div>
+        <div class="payment-method">
+          <label for="payment-method">Método de pago:</label>
+          <select id="payment-method" name="payment-method" required>
+            <option value="credit-card">Tarjeta de Crédito</option>
+            <option value="paypal">PayPal</option>
+            <option value="bank-transfer">Transferencia Bancaria</option>
+          </select>
+        </div>
+        <button class="btn-primary" type="submit">Pagar Ahora</button>
       </div>
-
-      <div class="payment-method">
-        <label for="payment-method">Método de pago:</label>
-        <select id="payment-method" name="payment-method" required>
-          <option value="credit-card">Tarjeta de Crédito</option>
-          <option value="paypal">PayPal</option>
-          <option value="bank-transfer">Transferencia Bancaria</option>
-        </select>
-      </div>
-
-      <button class="btn-primary" type="submit">Pagar Ahora</button>
     </div>
-  </div>
-</section>
-    <!-- Fin de la sección de Donaciones -->
-    <!-- Seccion Redes Sociales -->
-     <section id="REDESSOCIALES"></section>
- <main class="hero-section">
+  </section>
+
+  <!-- Redes Sociales -->
+  <section id="REDESSOCIALES"></section>
+  <main class="hero-section">
     <div class="hero-text">
       <span class="subtitle">CARITASSURORIENTE.ORG</span>
-      <h1>Un espacio de coordinación, administración y gestión, que<br>apoyado en un equipo de trabajo.</h1>
-      <p>
-        Respeto, honestidad y lealtad la cual nos compromete a ser transparentes tanto con nuestro cliente como con los grupos de interés.
-      </p>
-      <p>
-        Si deseas conocer más sobre nuestra labor, te invitamos a seguirnos en nuestras redes sociales.
-      </p>
+      <h1>Un espacio de coordinación, administración y gestión</h1>
+      <p>Respeto, honestidad y lealtad nos comprometen a ser transparentes con nuestros grupos de interés.</p>
+      <p>Conéctate con nuestra labor en redes sociales:</p>
       <div class="hero-buttons">
         <a href="https://www.facebook.com/share/1A4guAbPNr/?mibextid=wwXIfr" class="btn btn-primary">Facebook</a>
         <a href="https://www.instagram.com/pastoralsocialc?igsh=MXM4ejU3djcyYjdkZA==" class="btn btn-secondary">Instagram</a>
-        <a href="https://youtube.com/@pastoralsocialregional?si=_-V5a3d3wxr86Uwg" class="btn btn-primary">YOUTUBE</a>
+        <a href="https://youtube.com/@pastoralsocialregional?si=_-V5a3d3wxr86Uwg" class="btn btn-primary">YouTube</a>
       </div>
     </div>
     <div class="hero-image">
-      <img src="./IMAGENES_PAGINA/LOGO AUTORIZADO GRANDE.jpg" alt="Pastoral Social de Suroriente" />
+      <img src="./IMAGENES_PAGINA/LOGO AUTORIZADO GRANDE.jpg" alt="Pastoral Social Suroriente" />
     </div>
   </main>
-<!-- Fin de la sección de Redes Sociales -->
 
-
-
-
-
-  <!-- Pie de página -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <p>&copy; 2025 Pastoral Social Suroriente Colombiano. Todos los derechos reservados.</p>
     <nav>
       <a href="#">Política de privacidad</a>
       <a href="#">Términos de uso</a>
-      <a href="editar_evangelio.html">📖 Publica Evangelio</a>  
-      <a href="editar_noticias.html">📰 Publicar Noticia</a>
+<a href="editar_noticias.html">📰 Publicar Noticia</a>
+<a href="editar_evangelio.html">🙏 Publicar Evangelio</a>
     </nav>
   </footer>
 
-  <!-- Script para navegación responsive -->
-<script>
-  const toggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.nav-menu');
-  const navLinks = nav.querySelectorAll('a');
-
-  toggle.addEventListener('click', () => {
-    nav.classList.toggle('activo');
-  });
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('activo');
-    });
-  });
-</script>
-<!-- Script de menú hamburguesa -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
+  <!-- JS Menú Hamburguesa -->
+  <script>
     const toggleBtn = document.querySelector('.menu-toggle');
     const mainNav = document.querySelector('.main-nav');
-
     toggleBtn.addEventListener('click', () => {
       mainNav.classList.toggle('active');
     });
-  });
-</script>
-<!-- Script de validación y respuesta -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("form-contacto");
-    const mensaje = document.getElementById("mensaje-exito");
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault(); // Evita el envío real del formulario
-
-      const emailInput = form.querySelector('input[name="email"]');
-      const email = emailInput.value;
-
-      // Validación de correo con regex
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      if (!emailRegex.test(email)) {
-        alert("Por favor ingresa un correo electrónico válido.");
-        emailInput.focus();
-        return;
-      }
-
-      // Si pasa la validación
-      mensaje.style.display = "block";
-      form.reset(); // Limpia el formulario
-    });
-  });
-</script>
-<script>
-  // Animación de la cuenta bancaria
-  document.addEventListener("DOMContentLoaded", function () {
-    const cuentaAnimada = document.querySelector('.cuenta-animada');
-    let cuenta = 24050743036;
-    let index = 0;
-
-    function animarCuenta() {
-      if (index < cuenta.toString().length) {
-        cuentaAnimada.textContent += cuenta.toString()[index];
-        index++;
-        setTimeout(animarCuenta, 100); // Cambia el número cada 100 ms
-      }
-    }
-
-    animarCuenta();
-
-    setTimeout(() => {
-      document.querySelector('.cuenta-animada').style.animation = 'none';
-    }, 5000); // Detener animación después de 5 segundos
-  });
-</script>
-
+  </script>
 
 </body>
 </html>
-
-
