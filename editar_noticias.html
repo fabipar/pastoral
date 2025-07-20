@@ -114,7 +114,6 @@
     }
   </script>
 
-  <!-- Encabezado y botón de donar -->
   <header class="navbar">
     <div class="nav-logo">
       <img src="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" alt="Logo">
@@ -138,15 +137,13 @@
 
   <a href="#DONACION" class="donate-button">Donar</a>
 
-  <!-- Cerrar sesión -->
   <div class="logout">
     <a href="#" onclick="cerrarSesion()">🔓 Cerrar sesión</a>
   </div>
 
-  <!-- Cuerpo principal -->
   <main>
     <h1>📝 Editar Noticias</h1>
-    <form id="formNoticia" enctype="multipart/form-data">
+    <form id="formNoticia" enctype="multipart/form-data" method="POST">
       <label for="fecha">📅 Fecha:</label>
       <input type="date" id="fecha" name="fecha" required />
 
@@ -176,7 +173,6 @@
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <p>&copy; 2025 Pastoral Social Suroriente Colombiano. Todos los derechos reservados.</p>
     <nav>
@@ -185,69 +181,71 @@
     </nav>
   </footer>
 
-  <!-- Script -->
-  <script>
-    // Botón hamburguesa
-    document.querySelector('.menu-toggle').onclick = () => {
-      document.querySelector('.main-nav').classList.toggle('active');
-    };
+<script>
+  document.querySelector('.menu-toggle').onclick = () => {
+    document.querySelector('.main-nav').classList.toggle('active');
+  };
 
-    // Cerrar sesión
-    function cerrarSesion() {
-      sessionStorage.clear();
-      window.location.href = 'login_noticias.html';
+  function cerrarSesion() {
+    sessionStorage.clear();
+    window.location.href = 'login_noticias.html';
+  }
+
+  document.getElementById('formNoticia').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const mensajeDiv = document.getElementById('mensaje');
+
+    // Mostrar qué se está enviando
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + ':', pair[1]);
     }
 
-    // Guardar noticia
-    document.getElementById('formNoticia').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const formData = new FormData(this);
-      const mensajeDiv = document.getElementById('mensaje');
-
-      fetch('guardar_noticias.php', {
-        method: 'POST',
-        body: formData
-      })
-      .then(res => res.ok ? res.text() : Promise.reject(res.status))
-      .then(msg => {
-        mensajeDiv.textContent = '✅ Noticia guardada correctamente.';
-        mensajeDiv.className = 'mensaje exito';
-        this.reset();
-        document.getElementById('previewImagen').style.display = 'none';
-        actualizarVistaPrevia();
-      })
-      .catch(() => {
-        mensajeDiv.textContent = '❌ Error al guardar la noticia.';
-        mensajeDiv.className = 'mensaje error';
-      });
+    fetch('/pastoral/guardar_noticias.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(async res => {
+      const text = await res.text();
+      console.log("🖥️ Respuesta de PHP:", text);
+      if (!res.ok) throw new Error(text);
+      mensajeDiv.innerHTML = text;
+      mensajeDiv.className = 'mensaje exito';
+      this.reset();
+      document.getElementById('previewImagen').style.display = 'none';
+    })
+    .catch(err => {
+      mensajeDiv.innerHTML = '❌<br><pre style="white-space: pre-wrap;">' + err.message + '</pre>';
+      mensajeDiv.className = 'mensaje error';
+      console.error("🚨 Error del servidor:", err.message);
     });
+  });
 
-    // Vista previa
-    const campos = ["fecha", "titulo", "contenido", "ubicacion"];
-    campos.forEach(id => {
-      document.getElementById(id).addEventListener("input", actualizarVistaPrevia);
-    });
+  const campos = ["fecha", "titulo", "contenido", "ubicacion"];
+  campos.forEach(id => {
+    document.getElementById(id).addEventListener("input", actualizarVistaPrevia);
+  });
 
-    document.getElementById("imagen").addEventListener("change", function () {
-      const archivo = this.files[0];
-      if (archivo) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          const img = document.getElementById("previewImagen");
-          img.src = e.target.result;
-          img.style.display = "block";
-        };
-        reader.readAsDataURL(archivo);
-      }
-    });
-
-    function actualizarVistaPrevia() {
-      document.getElementById("previewTitulo").textContent = document.getElementById("titulo").value;
-      document.getElementById("previewFecha").textContent = document.getElementById("fecha").value;
-      document.getElementById("previewUbicacion").textContent = document.getElementById("ubicacion").value;
-      document.getElementById("previewContenido").textContent = document.getElementById("contenido").value;
+  document.getElementById("imagen").addEventListener("change", function () {
+    const archivo = this.files[0];
+    if (archivo) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = document.getElementById("previewImagen");
+        img.src = e.target.result;
+        img.style.display = "block";
+      };
+      reader.readAsDataURL(archivo);
     }
-  </script>
+  });
+
+  function actualizarVistaPrevia() {
+    document.getElementById("previewTitulo").textContent = document.getElementById("titulo").value;
+    document.getElementById("previewFecha").textContent = document.getElementById("fecha").value;
+    document.getElementById("previewUbicacion").textContent = document.getElementById("ubicacion").value;
+    document.getElementById("previewContenido").textContent = document.getElementById("contenido").value;
+  }
+</script>
 </body>
 </html>
 
