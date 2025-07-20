@@ -89,29 +89,81 @@
         font-size: 20px;
       }
     }
+    /* Submenú */
+    .has-submenu {
+      position: relative;
+    }
+
+    .has-submenu .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      display: none;
+      list-style: none;
+      margin: 0;
+      padding: 0.5rem 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 999;
+      min-width: 180px;
+    }
+
+    .has-submenu:hover .submenu {
+      display: block;
+    }
+
+    .submenu li a {
+      display: block;
+      padding: 0.6rem 1rem;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .submenu li a:hover {
+      background-color: #f0f0f0;
+      color: #007B7F;
+    }
+
+    @media (max-width: 768px) {
+      .has-submenu .submenu {
+        position: static;
+        background-color: transparent;
+        box-shadow: none;
+      }
+      .submenu li a {
+        padding-left: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- ENCABEZADO INSTITUCIONAL -->
+
+  <!-- Encabezado -->
   <header class="navbar">
     <div class="nav-logo">
-      <img src="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" alt="Logo">
+      <img src="./IMAGENES/LOGO PASTORAL.jpg" alt="Logo">
       <div class="nav-text">
         <span class="titulo">Pastoral Social Regional</span><br>
         <span class="subtitulo">Suroriente Colombiano</span>
       </div>
     </div>
-
     <button class="menu-toggle" aria-label="Abrir menú">☰</button>
-
     <nav class="main-nav">
       <ul>
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="proyectos.html">Proyectos</a></li>
+        <li><a href="index.html#PROYECTOS">Proyectos</a></li>
         <li><a href="noticias.html">Noticias</a></li>
-        <li><a href="QUIENESSOMOS.html">Quienes Somos</a></li>
-        <li><a href="#DONACION">Donaciones</a></li>
-        <li><a href="#REDESSOCIALES">Contacto</a></li>
+        <li class="has-submenu">
+          <a href="#QUIENESSOMOS">Quienes Somos ▾</a>
+          <ul class="submenu">
+            <li><a href="index.html#mision">Misión</a></li>
+            <li><a href="index.html#vision">Visión</a></li>
+            <li><a href="index.html#principios">Principios</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#DONACION">Donaciones</a></li>
+        <li><a href="index.html#REDESSOCIALES">Contacto</a></li>
       </ul>
     </nav>
   </header>

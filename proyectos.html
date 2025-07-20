@@ -9,6 +9,54 @@
   <link rel="stylesheet" href="FORM_ENCAB_FOOT.css" />
   <link rel="stylesheet" href="proyectos.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* SUBMENÚ */
+    .has-submenu {
+      position: relative;
+    }
+
+    .has-submenu .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      display: none;
+      list-style: none;
+      margin: 0;
+      padding: 0.5rem 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 999;
+      min-width: 180px;
+    }
+
+    .has-submenu:hover .submenu {
+      display: block;
+    }
+
+    .submenu li a {
+      display: block;
+      padding: 0.6rem 1rem;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .submenu li a:hover {
+      background-color: #f0f0f0;
+      color: #007B7F;
+    }
+
+    @media (max-width: 768px) {
+      .has-submenu .submenu {
+        position: static;
+        box-shadow: none;
+        background-color: transparent;
+      }
+
+      .submenu li a {
+        padding-left: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -27,7 +75,15 @@
         <li><a href="index.html">Inicio</a></li>
         <li><a href="proyectos.html">Proyectos</a></li>
         <li><a href="noticias.html">Noticias</a></li>
-        <li><a href="QUIENESSOMOS.html">Quienes Somos</a></li>
+        <li class="has-submenu">
+          <a href="QUIENESSOMOS.html">Quienes Somos ▾</a>
+          <ul class="submenu">
+            <li><a href="QUIENESSOMOS.html#mision">Misión</a></li>
+            <li><a href="QUIENESSOMOS.html#vision">Visión</a></li>
+            <li><a href="QUIENESSOMOS.html#principios">Principios</a></li>
+            <li><a href="QUIENESSOMOS.html#contacto">Contacto</a></li>
+          </ul>
+        </li>
         <li><a href="#DONACION">Donaciones</a></li>
         <li><a href="#REDESSOCIALES">Contacto</a></li>
       </ul>
@@ -41,7 +97,7 @@
   <main class="contenido">
     <h1 id="PROYECTOS" style="text-align: center; margin-bottom: 2rem;">NUESTROS PROYECTOS</h1>
 
-    <!-- Proyecto (reutilizable) -->
+    <!-- Ejemplo de proyecto -->
     <section class="project">
       <h2>PASTORAL SOCIAL DEL SURORIENTE COLOMBIANO</h2>
       <div class="gallery-container collapsed">
@@ -60,45 +116,20 @@
       <button class="toggle-btn" onclick="toggleGallery(this)">Ver más</button>
     </section>
 
-    <!-- Otros proyectos (puedes duplicar el bloque anterior con sus cambios) -->
+    <!-- Puedes duplicar bloques como el anterior para otros proyectos -->
     <section class="project">
       <h2>PROYECTO ADVENIAT</h2>
       <div class="gallery-container collapsed">
         <button class="nav-arrow nav-left" onclick="scrollGallery(this, -1)">‹</button>
         <div class="gallery">
           <img src="./IMAGENES/IMAGENES PROYECTOS/Abjunte Imagen.png" alt="1">
-          <!-- Repite imágenes según sea necesario -->
         </div>
         <button class="nav-arrow nav-right" onclick="scrollGallery(this, 1)">›</button>
       </div>
       <button class="toggle-btn" onclick="toggleGallery(this)">Ver más</button>
     </section>
 
-    <!-- Proyecto MISEREOR -->
-    <section class="project">
-      <h2>PROYECTO MISEREOR</h2>
-      <div class="gallery-container collapsed">
-        <button class="nav-arrow nav-left" onclick="scrollGallery(this, -1)">‹</button>
-        <div class="gallery">
-          <img src="./IMAGENES/IMAGENES PROYECTOS/Abjunte Imagen.png" alt="1">
-        </div>
-        <button class="nav-arrow nav-right" onclick="scrollGallery(this, 1)">›</button>
-      </div>
-      <button class="toggle-btn" onclick="toggleGallery(this)">Ver más</button>
-    </section>
-
-    <!-- Proyecto Unión Europea -->
-    <section class="project">
-      <h2>PROYECTO UNIÓN EUROPEA</h2>
-      <div class="gallery-container collapsed">
-        <button class="nav-arrow nav-left" onclick="scrollGallery(this, -1)">‹</button>
-        <div class="gallery">
-          <img src="./IMAGENES/IMAGENES PROYECTOS/UNION EUROPEA/LETICIA/1.jpeg" alt="1">
-        </div>
-        <button class="nav-arrow nav-right" onclick="scrollGallery(this, 1)">›</button>
-      </div>
-      <button class="toggle-btn" onclick="toggleGallery(this)">Ver más</button>
-    </section>
+    <!-- Agrega más secciones según necesidad... -->
   </main>
 
   <!-- PIE DE PÁGINA -->
@@ -110,7 +141,7 @@
     </nav>
   </footer>
 
-  <!-- SCRIPT GALERÍA -->
+  <!-- SCRIPT GALERÍA Y MENÚ -->
   <script>
     function toggleGallery(button) {
       const container = button.previousElementSibling;
@@ -138,7 +169,6 @@
         }
       });
 
-      // Menú hamburguesa
       const toggleBtn = document.querySelector('.menu-toggle');
       const mainNav = document.querySelector('.main-nav');
       toggleBtn.addEventListener('click', () => {
@@ -149,5 +179,6 @@
 
 </body>
 </html>
+
 
 

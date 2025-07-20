@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -9,8 +9,55 @@
   <link rel="icon" href="./IMAGENES/LOGO PASTORAL.jpg" type="image/x-icon">
   <link rel="stylesheet" href="quienessomos.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <!-- SwiperJS CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+  <style>
+    /* Submenú */
+    .has-submenu {
+      position: relative;
+    }
+
+    .has-submenu .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      display: none;
+      list-style: none;
+      margin: 0;
+      padding: 0.5rem 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 999;
+      min-width: 180px;
+    }
+
+    .has-submenu:hover .submenu {
+      display: block;
+    }
+
+    .submenu li a {
+      display: block;
+      padding: 0.6rem 1rem;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .submenu li a:hover {
+      background-color: #f0f0f0;
+      color: #007B7F;
+    }
+
+    @media (max-width: 768px) {
+      .has-submenu .submenu {
+        position: static;
+        background-color: transparent;
+        box-shadow: none;
+      }
+      .submenu li a {
+        padding-left: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -27,11 +74,19 @@
     <nav class="main-nav">
       <ul>
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="index.html">Proyectos</a></li>
-        <li><a href="index.html">Noticias</a></li>
-        <li><a href="index.html">Quienes Somos</a></li>
-        <li><a href="index.html">Donaciones</a></li>
-        <li><a href="index.html">Contacto</a></li>
+        <li><a href="index.html#PROYECTOS">Proyectos</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li class="has-submenu">
+          <a href="#QUIENESSOMOS">Quienes Somos ▾</a>
+          <ul class="submenu">
+            <li><a href="index.html#mision">Misión</a></li>
+            <li><a href="index.html#vision">Visión</a></li>
+            <li><a href="index.html#principios">Principios</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#DONACION">Donaciones</a></li>
+        <li><a href="index.html#REDESSOCIALES">Contacto</a></li>
       </ul>
     </nav>
   </header>
@@ -84,25 +139,14 @@
         <div class="swiper-slide"><img src="./IMAGENES/LETICIA.jpg" alt="Vicariato Leticia"></div>
         <div class="swiper-slide"><img src="./IMAGENES/GRANADA.jpg" alt="Diocesis de Granada"></div>
       </div>
-      <!-- Controles -->
       <div class="swiper-pagination"></div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     </div>
   </section>
 
-<!-- Botón corazón flotante -->
- <a href="#DONACION" class="donate-button" aria-label="Donar ahora">
-    ❤️ Donar
-  </a>
-<!-- Fin de la sección Boton corazon flotante-->
-
-
-
-
-
-
-
+  <!-- Botón corazón flotante -->
+  <a href="#DONACION" class="donate-button" aria-label="Donar ahora">❤️ Donar</a>
 
   <!-- Pie de página -->
   <footer class="site-footer">
@@ -116,41 +160,36 @@
   <!-- SwiperJS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
-  <!-- Script de navegación responsive -->
+  <!-- Script navegación y carrusel -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const toggleBtn = document.querySelector('.menu-toggle');
       const mainNav = document.querySelector('.main-nav');
-
       toggleBtn.addEventListener('click', () => {
         mainNav.classList.toggle('active');
       });
-    });
-  </script>
 
-  <!-- Inicialización del carrusel -->
-  <script>
-    const swiper = new Swiper(".mySwiper", {
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      effect: "slide"
+      new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        effect: "slide"
+      });
     });
   </script>
 
 </body>
 </html>
-
 
 
 

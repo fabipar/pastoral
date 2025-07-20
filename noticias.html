@@ -8,108 +8,15 @@
   <title>Noticias | Pastoral Social</title>
   <link rel="icon" href="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" type="image/x-icon">
   <link rel="stylesheet" href="FORM_ENCAB_FOOT.css">
+  <link rel="stylesheet" href="noticias.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background: #f9f9f4;
-      font-family: 'Inter', sans-serif;
-    }
-
-    h1 {
-      text-align: center;
-      color: #007B7F;
-      margin: 120px 0 30px;
-    }
-
-    .contenedor {
-      max-width: 1100px;
-      margin: auto;
-      padding: 0 20px 60px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-
-    .tarjeta {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transition: transform 0.3s;
-    }
-
-    .tarjeta:hover {
-      transform: translateY(-4px);
-    }
-
-    .tarjeta img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-    }
-
-    .contenido {
-      padding: 16px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .contenido h3 {
-      color: #007B7F;
-      margin: 0 0 10px;
-      font-size: 18px;
-    }
-
-    .contenido .ubicacion {
-      font-size: 13px;
-      color: #555;
-      margin-bottom: 10px;
-    }
-
-    .contenido p {
-      font-size: 15px;
-      color: #333;
-      line-height: 1.5;
-      flex-grow: 1;
-    }
-
-    .ver-mas {
-      margin-top: 12px;
-      background: #007B7F;
-      color: white;
-      padding: 10px;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      border-radius: 6px;
-      width: 100%;
-      transition: background 0.3s;
-    }
-
-    .ver-mas:hover {
-      background: #005f63;
-    }
-
-    @media (max-width: 600px) {
-      .contenedor {
-        grid-template-columns: 1fr;
-        padding: 10px;
-      }
-
-      .tarjeta img {
-        height: 160px;
-      }
-    }
-  </style>
 </head>
 <body>
-  <!-- ENCABEZADO INSTITUCIONAL -->
+
+  <!-- ENCABEZADO -->
   <header class="navbar">
     <div class="nav-logo">
-      <img src="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" alt="Logo">
+      <img src="./IMAGENES/LOGO PASTORAL.jpg" alt="Logo">
       <div class="nav-text">
         <span class="titulo">Pastoral Social Regional</span><br>
         <span class="subtitulo">Suroriente Colombiano</span>
@@ -119,16 +26,24 @@
     <nav class="main-nav">
       <ul>
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="proyectos.html">Proyectos</a></li>
+        <li><a href="index.html#PROYECTOS">Proyectos</a></li>
         <li><a href="noticias.html">Noticias</a></li>
-        <li><a href="QUIENESSOMOS.html">Quienes Somos</a></li>
-        <li><a href="#DONACION">Donaciones</a></li>
-        <li><a href="#REDESSOCIALES">Contacto</a></li>
+        <li class="has-submenu">
+          <a href="#QUIENESSOMOS">Quienes Somos ▾</a>
+          <ul class="submenu">
+            <li><a href="index.html#mision">Misión</a></li>
+            <li><a href="index.html#vision">Visión</a></li>
+            <li><a href="index.html#principios">Principios</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#DONACION">Donaciones</a></li>
+        <li><a href="index.html#REDESSOCIALES">Contacto</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- BOTÓN DE DONAR FLOTANTE -->
+  <!-- BOTÓN DONAR -->
   <a href="#DONACION" class="donate-button" aria-label="Donar ahora">❤️ Donar</a>
 
   <!-- TÍTULO -->
@@ -146,7 +61,7 @@
     </nav>
   </footer>
 
-  <!-- CARGA Y LOGICA DE NOTICIAS -->
+  <!-- SCRIPT DE NOTICIAS -->
   <script>
     fetch("noticias.json")
       .then(response => response.json())
@@ -165,7 +80,7 @@
             <img src="${noticia.imagen}" alt="Imagen noticia ${index + 1}">
             <div class="contenido">
               <h3>${noticia.titulo}</h3>
-              <div class="ubicacion">📍 ${noticia.ubicacion} — 📅 ${noticia.fecha}</div>
+              <div class="ubicacion">📍 ${noticia.ubicacion} — 🗓️ ${noticia.fecha}</div>
               <p class="texto">${contenidoRecortado}</p>
               <button class="ver-mas">Ver más</button>
             </div>
@@ -178,9 +93,11 @@
           boton.addEventListener("click", () => {
             if (!expandido) {
               parrafo.textContent = contenidoCompleto;
+              parrafo.classList.add("expandido");
               boton.textContent = "Ver menos";
             } else {
               parrafo.textContent = contenidoRecortado;
+              parrafo.classList.remove("expandido");
               boton.textContent = "Ver más";
             }
             expandido = !expandido;
@@ -195,12 +112,11 @@
       });
   </script>
 
-  <!-- SCRIPT MENÚ HAMBURGUESA -->
+  <!-- MENÚ HAMBURGUESA -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const toggleBtn = document.querySelector('.menu-toggle');
       const mainNav = document.querySelector('.main-nav');
-
       toggleBtn.addEventListener('click', () => {
         mainNav.classList.toggle('active');
       });
@@ -208,6 +124,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
