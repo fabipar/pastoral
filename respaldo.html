@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Respaldo del Evangelio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      color: #27ae60;
+      text-align: center;
+    }
+    .logout {
+      text-align: right;
+      margin-bottom: 10px;
+    }
+    .logout a {
+      color: #c62828;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .backup-item {
+      background: #fff;
+      margin: 10px auto;
+      max-width: 700px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.3s;
+    }
+    .backup-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+    button {
+      margin: 5px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 5px;
+      background: #2c3e50;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1a242f;
+    }
+    .contenido {
+      display: none;
+      white-space: pre-wrap;
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<script>
+  const autenticado = sessionStorage.getItem("autenticado");
+  const rol = sessionStorage.getItem("rol");
+  if (autenticado !== "true" || rol !== "admin") {
+    window.location.href = "login.html";
+  }
+</script>
+<div class="logout">
+  <a href="#" onclick="cerrarSesion()">🔓 Cerrar sesión</a>
+</div>
+<h1 data-aos="fade-down">📂 Respaldo del Evangelio</h1>
+<div id="lista" data-aos="fade-up"></div>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+
+  function cerrarSesion() {
+    sessionStorage.removeItem("autenticado");
+    sessionStorage.removeItem("rol");
+    window.location.href = "login.html";
+  }
+
+  async function cargarRespaldo() {
+    try {
+      const resp = await fetch("listar_respaldo.php");
+      const archivos = await resp.json();
+
+      const lista = document.getElementById("lista");
+      archivos.forEach(nombre => {
+        const div = document.createElement("div");
+        div.className = "backup-item";
+        div.innerHTML = `
+          <strong>${nombre}</strong><br>
+          <button onclick="ver('${nombre}', this)">👁 Ver</button>
+          <button onclick="restaurar('${nombre}')">♻ Restaurar</button>
+          <div class="contenido"></div>
+        `;
+        lista.appendChild(div);
+      });
+    } catch (e) {
+      document.getElementById("lista").textContent = "⚠ Error al cargar respaldos.";
+    }
+  }
+
+  async function ver(nombre, boton) {
+    const div = boton.closest(".backup-item").querySelector(".contenido");
+    if (div.style.display === "block") {
+      div.style.display = "none";
+      boton.textContent = "👁 Ver";
+      return;
+    }
+    const resp = await fetch(`respaldoevangelio/${nombre}`);
+    const texto = await resp.text();
+    div.innerHTML = `<pre>${texto}</pre>`;
+    div.style.display = "block";
+    boton.textContent = "🙈 Ocultar";
+  }
+
+  async function restaurar(nombre) {
+    const confirmacion = confirm(`¿Deseas restaurar el archivo "${nombre}"? Esto reemplazará el evangelio actual.`);
+    if (!confirmacion) return;
+    const resp = await fetch("restaurar_respaldo.php", {
+      method: "POST",
+      body: JSON.stringify({ archivo: nombre })
+    });
+    const texto = await resp.text();
+    alert(texto);
+  }
+
+  cargarRespaldo();
+</script>
+</body>
+</html>
+
+
+
+
+
+

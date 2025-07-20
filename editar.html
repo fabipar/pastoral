@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editar Evangelio Semanal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #2e7d32;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #00695c;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .mensaje {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .exito { color: #2e7d32; }
+    .error { color: #c62828; }
+    .preview {
+      margin-top: 40px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #e8f5e9;
+    }
+    .preview h2 {
+      margin-top: 0;
+      color: #1b5e20;
+    }
+    .enlaces {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .enlaces a {
+      color: #00695c;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    .logout {
+      text-align: right;
+      margin: 10px;
+    }
+    .logout a {
+      color: #c62828;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<script>
+  const autenticado = sessionStorage.getItem("autenticado");
+  const rol = sessionStorage.getItem("rol");
+  if (autenticado !== "true" || rol !== "admin") {
+    window.location.href = "login.html";
+  }
+</script>
+<div class="logout">
+  <a href="#" onclick="cerrarSesion()">🔓 Cerrar sesión</a>
+</div>
+<div class="container" data-aos="fade-up">
+  <h1>✍️ Editar Evangelio Semanal</h1>
+  <label for="fecha">Fecha:</label>
+  <input type="date" id="fecha" />
+  <label for="titulo">Título:</label>
+  <input type="text" id="titulo" />
+  <label for="contenido">Contenido:</label>
+  <textarea id="contenido" rows="8"></textarea>
+  <button onclick="guardarEvangelio()">💾 Guardar Cambios</button>
+  <div id="mensaje" class="mensaje"></div>
+  <div class="preview" data-aos="zoom-in">
+    <h2 id="previewTitulo"></h2>
+    <p><strong>📅 Fecha:</strong> <span id="previewFecha"></span></p>
+    <p id="previewContenido"></p>
+  </div>
+  <div class="enlaces">
+    <a href="respaldo.html">🗂️ Ver respaldos</a> |
+    <a href="evangelio.html" target="_blank">👁️ Vista pública</a>
+  </div>
+</div>
+<script>
+  function cerrarSesion() {
+    sessionStorage.removeItem("autenticado");
+    sessionStorage.removeItem("rol");
+    window.location.href = "login.html";
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch("evangelio.json")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("fecha").value = data.fecha;
+        document.getElementById("titulo").value = data.titulo;
+        document.getElementById("contenido").value = data.contenido;
+        actualizarVistaPrevia();
+      })
+      .catch(() => {
+        document.getElementById("mensaje").textContent = "⚠️ Error al cargar evangelio.json";
+        document.getElementById("mensaje").className = "mensaje error";
+      });
+
+    document.getElementById("fecha").addEventListener("input", actualizarVistaPrevia);
+    document.getElementById("titulo").addEventListener("input", actualizarVistaPrevia);
+    document.getElementById("contenido").addEventListener("input", actualizarVistaPrevia);
+  });
+
+  function actualizarVistaPrevia() {
+    document.getElementById("previewTitulo").textContent = document.getElementById("titulo").value;
+    document.getElementById("previewFecha").textContent = document.getElementById("fecha").value;
+    document.getElementById("previewContenido").textContent = document.getElementById("contenido").value;
+  }
+
+  function guardarEvangelio() {
+    const data = {
+      fecha: document.getElementById("fecha").value,
+      titulo: document.getElementById("titulo").value,
+      contenido: document.getElementById("contenido").value,
+    };
+
+    fetch("guardar.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+    .then((res) => res.ok ? res.text() : Promise.reject(res.text()))
+    .then((msg) => {
+      document.getElementById("mensaje").textContent = "✅ Cambios guardados y respaldados correctamente.";
+      document.getElementById("mensaje").className = "mensaje exito";
+    })
+    .catch(() => {
+      document.getElementById("mensaje").textContent = "❌ Error al guardar el evangelio.";
+      document.getElementById("mensaje").className = "mensaje error";
+    });
+  }
+</script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({ duration: 800 });</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

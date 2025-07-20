@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="fabian leonardo paramo" />
+  <meta name="" content="Pastoral Social Regional Suroriente Colombiano - Misión, Visión y Principios" />
+  <title>PASTORAL SOCIAL REGIONAL SURORIENTE COLOMBIANO</title>
+  <link rel="icon" href="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" type="image/x-icon">  
+  <link rel="stylesheet" href="FORM_ENCAB_FOOT.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+</head>
+<body>
+  <!-- ENCABEZADO -->
+  <header class="navbar">
+    <div class="nav-logo">
+      <img src="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" alt="Logo">
+      <div class="nav-text">
+        <span class="titulo">Pastoral Social Regional</span><br>
+        <span class="subtitulo">Suroriente Colombiano</span>
+      </div>
+    </div>
+
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#INICIO">Inicio</a></li>
+        <li><a href="proyectos.html">Proyectos</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="QUIENESSOMOS.html">Quienes Somos</a></li>
+        <li><a href="#DONACION">Donaciones</a></li>
+        <li><a href="#REDESSOCIALES">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Botón corazón flotante -->
+  <a href="#DONACION" class="donate-button" aria-label="Donar ahora">❤️ Donar</a>
+
+  <!-- HERO con fondo -->
+  <section class="hero" style="text-align: center; padding: 5rem 1rem; background: url('https://i.imgur.com/gH1zWxN.jpg') no-repeat center/cover; color: #fff;">
+    <h1 data-aos="fade-down">Pastoral Social Regional del Suroriente Colombiano</h1>
+    <p data-aos="fade-up">Transformando vidas desde la fe y el compromiso social</p>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="contenido">
+    <h2 data-aos="fade-up" style="text-align: center; margin-bottom: 2rem;">¿Qué ofrecemos?</h2>
+    <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+      <div class="servicio" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://i.imgur.com/gH1zWxN.jpg" alt="Acompañamiento pastoral" style="width: 100%; border-radius: 8px;">
+        <h3><i class="fas fa-hands-helping"></i> Acompañamiento Pastoral</h3>
+        <p>Guía espiritual y social para personas y comunidades en contextos vulnerables.</p>
+      </div>
+      <div class="servicio" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://i.imgur.com/lMpjLRZ.jpg" alt="Capacitaciones" style="width: 100%; border-radius: 8px;">
+        <h3><i class="fas fa-chalkboard-teacher"></i> Capacitaciones</h3>
+        <p>Formación en liderazgo, doctrina social de la Iglesia y desarrollo integral.</p>
+      </div>
+      <div class="servicio" data-aos="fade-up" data-aos-delay="300">
+        <img src="https://i.imgur.com/OuB3Hc0.jpg" alt="Talleres" style="width: 100%; border-radius: 8px;">
+        <h3><i class="fas fa-users-cog"></i> Talleres Vivenciales</h3>
+        <p>Espacios de reflexión y acción pastoral contextualizados.</p>
+      </div>
+      <div class="servicio" data-aos="fade-up" data-aos-delay="400">
+        <img src="https://i.imgur.com/Xy1U9nh.jpg" alt="Formulación de proyectos" style="width: 100%; border-radius: 8px;">
+        <h3><i class="fas fa-project-diagram"></i> Formulación de Proyectos</h3>
+        <p>Diseño de proyectos sociales con enfoque ético y sostenible.</p>
+      </div>
+      <div class="servicio" data-aos="fade-up" data-aos-delay="500">
+        <img src="https://i.imgur.com/ERNUhXY.jpg" alt="Retiros espirituales" style="width: 100%; border-radius: 8px;">
+        <h3><i class="fas fa-praying-hands"></i> Retiros Espirituales Empresariales</h3>
+        <p>Experiencias de interioridad y espiritualidad para equipos de trabajo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contenido" id="REDESSOCIALES" data-aos="fade-up" style="text-align: center;">
+    <h2>¿Necesitas más información?</h2>
+    <p>Contáctanos con tus preguntas, ideas o solicitudes. Será un gusto servirte.</p>
+    <p><strong>📧 Escríbenos a:</strong> 
+      <a href="mailto:pastoralsocial@caritas.org">pastoralsocial@caritas.org</a>
+    </p>
+    <img src="https://i.imgur.com/xkoYqtV.png" alt="Cruz católica" class="icono-religioso" style="max-width: 80px; margin-top: 1rem;">
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="site-footer">
+    <p>&copy; 2025 Pastoral Social Suroriente Colombiano. Todos los derechos reservados.</p>
+    <nav>
+      <a href="#">Política de privacidad</a>
+      <a href="#">Términos de uso</a>
+    </nav>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtn = document.querySelector('.menu-toggle');
+      const mainNav = document.querySelector('.main-nav');
+      toggleBtn.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+

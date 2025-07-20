@@ -1,0 +1,267 @@
+/* ---------------- RESET ---------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px; /* espacio para header fijo */
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* ---------------- ENCABEZADO ---------------- */
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-logo img {
+  height: 50px;
+  border-radius: 4px;
+}
+
+.nav-text .titulo {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.nav-text .subtitulo {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #333;
+  cursor: pointer;
+  display: none;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.main-nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+  color: #007B7F;
+}
+
+/* ---------------- HERO ---------------- */
+.hero {
+  text-align: center;
+  padding: 6rem 1rem 4rem;
+  background: url('https://i.imgur.com/gH1zWxN.jpg') no-repeat center/cover;
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+/* ---------------- SERVICIOS ---------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.servicio {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.servicio:hover {
+  transform: translateY(-5px);
+}
+
+.servicio img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.servicio h3 {
+  font-size: 1.1rem;
+  color: #007B7F;
+  margin-bottom: 0.5rem;
+}
+
+.servicio p {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* ---------------- CONTACTO ---------------- */
+.contacto {
+  background-color: #eef9f9;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.contacto h2 {
+  color: #007B7F;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.contacto p {
+  color: #333;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.contacto a {
+  color: #007B7F;
+  text-decoration: none;
+}
+
+.contacto a:hover {
+  text-decoration: underline;
+}
+
+.icono-religioso {
+  max-width: 80px;
+  margin-top: 1rem;
+}
+
+/* ---------------- PIE DE PÁGINA ---------------- */
+.site-footer {
+  background-color: #2c2c2c;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.95rem;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.site-footer nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.site-footer a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: text-decoration 0.3s;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ---------------- BOTÓN DONAR ---------------- */
+.donate-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #f7f4f5;
+  color: rgb(165, 6, 112);
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 999;
+}
+
+.donate-button:hover {
+  background-color: #f7f4f4;
+  transform: scale(1.05);
+}
+
+.donate-button:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 600px) {
+  .donate-button {
+    padding: 10px 16px;
+    font-size: 14px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .main-nav {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .main-nav.active {
+    display: flex;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+  }
+
+  .main-nav ul li {
+    width: 100%;
+  }
+
+  .main-nav ul li a {
+    display: block;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+  }
+}

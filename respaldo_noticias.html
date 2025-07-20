@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Respaldo de Noticias</title>
+  <link rel="icon" href="./IMAGENES/LOGO PASTORAL.jpg" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="FORM_ENCAB_FOOT.css">
+  <style>
+    .container {
+      max-width: 1000px;
+      margin: 120px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #007B7F;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f0f0f0;
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+    button {
+      margin-left: 10px;
+      padding: 6px 12px;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+    .restaurar {
+      background-color: #007B7F;
+      color: white;
+    }
+    .eliminar {
+      background-color: #c62828;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- ENCABEZADO -->
+  <div id="header"></div>
+
+  <div class="container">
+    <h1>🗂️ Respaldo de Noticias</h1>
+    <ul id="listaRespaldo"></ul>
+  </div>
+
+  <!-- BOTÓN DONAR -->
+  <div id="donar"></div>
+  <!-- PIE DE PÁGINA -->
+  <div id="footer"></div>
+
+  <!-- CARGAR COMPONENTES -->
+  <script>
+    async function includeComponent(id, file) {
+      const el = document.getElementById(id);
+      if (el) {
+        const res = await fetch(file);
+        const html = await res.text();
+        el.innerHTML = html;
+      }
+    }
+
+    includeComponent("header", "componentes/header.html");
+    includeComponent("footer", "componentes/footer.html");
+    includeComponent("donar", "componentes/donar.html");
+  </script>
+
+  <!-- FUNCIONES -->
+  <script>
+    async function cargarRespaldo() {
+      const res = await fetch('listar_respaldo_noticias.php');
+      const archivos = await res.json();
+      const lista = document.getElementById('listaRespaldo');
+      lista.innerHTML = '';
+
+      archivos.forEach(nombre => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <span>📁 ${nombre}</span>
+          <div>
+            <button class="restaurar" onclick="restaurar('${nombre}')">Restaurar</button>
+            <button class="eliminar" onclick="eliminar('${nombre}')">Eliminar</button>
+          </div>
+        `;
+        lista.appendChild(li);
+      });
+    }
+
+    async function restaurar(nombre) {
+      await fetch('restaurar_respaldo_noticia.php?archivo=' + nombre);
+      alert('✅ Noticia restaurada');
+      location.reload();
+    }
+
+    async function eliminar(nombre) {
+      if (confirm('¿Deseas eliminar este respaldo de forma definitiva?')) {
+        await fetch('eliminar_respaldo_noticia.php?archivo=' + nombre);
+        alert('❌ Respaldo eliminado');
+        location.reload();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', cargarRespaldo);
+  </script>
+</body>
+</html>

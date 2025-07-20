@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="fabian leonardo paramo" />
+  <meta name="description" content="Pastoral Social Regional Suroriente Colombiano - Misión, Visión y Principios" />
+  <title>Pastoral Social Regional Suroriente Colombiano</title>
+  <link rel="icon" href="./IMAGENES/LOGO PASTORAL.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="quienessomos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <!-- SwiperJS CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header class="navbar">
+    <div class="nav-logo">
+      <img src="./IMAGENES/LOGO PASTORAL.jpg" alt="Logo">
+      <div class="nav-text">
+        <span class="titulo">Pastoral Social Regional</span><br>
+        <span class="subtitulo">Suroriente Colombiano</span>
+      </div>
+    </div>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html">Proyectos</a></li>
+        <li><a href="index.html">Noticias</a></li>
+        <li><a href="index.html">Quienes Somos</a></li>
+        <li><a href="index.html">Donaciones</a></li>
+        <li><a href="index.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenido principal -->
+  <header>
+    <img src="./IMAGENES/ORGANIGRAMA PSR-SC .jpg" alt="Organigrama Pastoral Social" class="organigrama-img">
+    <h1>Pastoral Social Regional - Suroriente Colombiano</h1>
+  </header>
+
+  <section class="contenido">
+    <article class="card">
+      <h2>Jurisdicciones Eclesiásticas</h2>
+      <ul>
+        <li>Arquidiócesis de Villavicencio</li>
+        <li>Arquidiócesis de Granada en Colombia</li>
+        <li>Diócesis de San José del Guaviare</li>
+        <li>Vicariato Apostólico de Puerto Gaitán</li>
+        <li>Vicariato Apostólico de Puerto Carreño</li>
+        <li>Vicariato Apostólico de Inírida</li>
+        <li>Vicariato Apostólico de Mitú</li>
+        <li>Vicariato Apostólico de Leticia</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h2>Junta Directiva</h2>
+      <ul class="junta-directiva">
+        <li><span class="nombre">Monseñor Raúl Alfonso Carrillo Martínez</span><br><span class="cargo">Presidente</span></li>
+        <li><span class="nombre">Monseñor Nelson Jair Cárdenas Ramírez</span><br><span class="cargo">Representante de los Señores Obispos</span></li>
+        <li><span class="nombre">Pbro. Víctor Guillermo Cárdenas Campos</span><br><span class="cargo">Vicepresidente</span></li>
+        <li><span class="nombre">Pbro. Carlos Alberto Ricardo Perdomo</span><br><span class="cargo">Secretario</span></li>
+        <li><span class="nombre">Sra. Martha Lucía Carreño Borrero</span><br><span class="cargo">Representante de los Directores de Pastoral Social</span></li>
+        <li><span class="nombre">Luis Enrique Amado Prieto</span><br><span class="cargo">Director Ejecutivo</span></li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Galería de fotos (Swiper) -->
+  <section class="galeria">
+    <h2>Galería de Escudos</h2>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="./IMAGENES/VILLAVICENCIO.jpg" alt="Arquidiocesis de Villavicencio"></div>
+        <div class="swiper-slide"><img src="./IMAGENES/SANJOSE.jpg" alt="Diocesis de San Jose"></div>
+        <div class="swiper-slide"><img src="./IMAGENES/PUERTO GAITAN.jpg" alt="Vicariato Puerto Gaitan"></div>
+        <div class="swiper-slide"><img src="./IMAGENES/PUERTO CARREÑO.jpg" alt="Vicariato Puerto Carreño"></div>
+        <div class="swiper-slide"><img src="./IMAGENES/INHIRIDA.jpg" alt="Vicariato de Inhirida"></div>
+        <div class="swiper-slide"><img src="./IMAGENES/MITU.jpg" alt="Vicariato de Mitu"></div>
+        <div class="swiper-slide"><img src="./IMAGENES/LETICIA.jpg" alt="Vicariato Leticia"></div>
+        <div class="swiper-slide"><img src="./IMAGENES/GRANADA.jpg" alt="Diocesis de Granada"></div>
+      </div>
+      <!-- Controles -->
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+
+<!-- Botón corazón flotante -->
+ <a href="#DONACION" class="donate-button" aria-label="Donar ahora">
+    ❤️ Donar
+  </a>
+<!-- Fin de la sección Boton corazon flotante-->
+
+
+
+
+
+
+
+
+  <!-- Pie de página -->
+  <footer class="site-footer">
+    <p>&copy; 2025 Pastoral Social Suroriente Colombiano. Todos los derechos reservados.</p>
+    <nav>
+      <a href="#">Política de privacidad</a>
+      <a href="#">Términos de uso</a>
+    </nav>
+  </footer>
+
+  <!-- SwiperJS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <!-- Script de navegación responsive -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtn = document.querySelector('.menu-toggle');
+      const mainNav = document.querySelector('.main-nav');
+
+      toggleBtn.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+      });
+    });
+  </script>
+
+  <!-- Inicialización del carrusel -->
+  <script>
+    const swiper = new Swiper(".mySwiper", {
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      effect: "slide"
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+
+

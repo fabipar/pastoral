@@ -1,0 +1,133 @@
+/* Contenedor general de proyectos */
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* Título principal */
+.projects-container h1 {
+  font-size: 2rem;
+  color: #007B7F;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+/* Sección individual de proyecto */
+.project {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.project h2 {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Galería */
+.gallery-container {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto 1rem;
+}
+
+.gallery-container .gallery {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 0.5rem;
+}
+
+/* 👇 Ocultar scrollbar horizontal */
+.gallery-container .gallery {
+  scrollbar-width: none;         /* Firefox */
+  -ms-overflow-style: none;      /* Internet Explorer 10+ */
+}
+
+.gallery-container .gallery::-webkit-scrollbar {
+  display: none;                 /* Chrome, Safari, Opera */
+}
+
+.gallery-container img {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+/* Flechas de navegación */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #007B7F;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0.3rem 0.6rem;
+  transition: background-color 0.2s ease;
+}
+
+.nav-arrow:hover {
+  background-color: #eef9f9;
+}
+
+.nav-left {
+  left: -10px;
+}
+
+.nav-right {
+  right: -10px;
+}
+
+/* Botón Ver más / Ver menos */
+.toggle-btn {
+  display: block;
+  margin: 1rem auto 0;
+  background-color: #007B7F;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background-color: #005f63;
+}
+
+/* Limitar galería al colapsar */
+.gallery-container.collapsed .gallery {
+  max-height: 220px;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gallery-container img {
+    height: 160px;
+  }
+
+  .nav-arrow {
+    font-size: 1.6rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .toggle-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+
+

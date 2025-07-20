@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Noticias | Pastoral Social</title>
+  <link rel="stylesheet" href="FORM_ENCAB_FOOT.css">
+  <style>
+    .contenedor {
+      max-width: 1000px;
+      margin: 100px auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .tarjeta {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tarjeta img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .contenido {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contenido h3 {
+      color: #007B7F;
+      margin: 0 0 10px;
+    }
+
+    .contenido .ubicacion {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .contenido p {
+      font-size: 14px;
+      color: #444;
+      flex-grow: 1;
+    }
+
+    .ver-mas {
+      margin-top: 12px;
+      background: #007B7F;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 6px;
+      width: 100%;
+    }
+
+    @media (max-width: 600px) {
+      .contenedor {
+        grid-template-columns: 1fr;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Encabezado reutilizable -->
+  <header-component></header-component>
+
+  <h1 style="text-align:center; color:#007B7F; margin-top: 40px;">📰 Noticias</h1>
+  <div class="contenedor" id="contenedorNoticias"></div>
+
+  <!-- Footer reutilizable -->
+  <footer-component></footer-component>
+
+  <script src="componentes/encabezado.js"></script>
+  <script src="componentes/footer.js"></script>
+
+  <script>
+    fetch("noticias.json")
+      .then(response => response.json())
+      .then(noticias => {
+        const contenedor = document.getElementById("contenedorNoticias");
+        if (!Array.isArray(noticias)) return;
+
+        noticias.forEach((noticia, index) => {
+          const tarjeta = document.createElement("div");
+          tarjeta.className = "tarjeta";
+          tarjeta.innerHTML = `
+            <img src="${noticia.imagen}" alt="Imagen noticia ${index + 1}">
+            <div class="contenido">
+              <h3>${noticia.titulo}</h3>
+              <div class="ubicacion">📍 ${noticia.ubicacion} — 📅 ${noticia.fecha}</div>
+              <p>${noticia.contenido.slice(0, 100)}...</p>
+              <button class="ver-mas">Ver más</button>
+            </div>
+          `;
+          contenedor.appendChild(tarjeta);
+        });
+      })
+      .catch(err => {
+        document.getElementById("contenedorNoticias").innerHTML = "<p style='color:red;text-align:center;'>❌ Error al cargar las noticias.</p>";
+      });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+

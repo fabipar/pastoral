@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Papelera de Respaldo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff8f8;
+      padding: 20px;
+    }
+    h1 {
+      color: #b71c1c;
+    }
+    a.regresar {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #00695c;
+      text-decoration: none;
+    }
+    .papelera-item {
+      background: #fff3f3;
+      padding: 15px;
+      margin-bottom: 10px;
+      border: 1px solid #f44336;
+      border-radius: 6px;
+    }
+    .botones button {
+      margin-right: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .ver-btn { background: #4caf50; color: white; }
+    .restaurar-btn { background: #2196f3; color: white; }
+    .eliminar-def-btn { background: #d32f2f; color: white; }
+    .contenido {
+      display: none;
+      background: #fbe9e7;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 4px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>🗑️ Papelera de respaldos</h1>
+  <a href="respaldo.html" class="regresar">⬅️ Volver a respaldos</a>
+  <div id="papelera"></div>
+
+  <script>
+    async function cargarPapelera() {
+      const contenedor = document.getElementById("papelera");
+      contenedor.innerHTML = "Cargando...";
+
+      try {
+        const resp = await fetch("papelera_respaldo.php");
+        const archivos = await resp.json();
+
+        if (archivos.length === 0) {
+          contenedor.innerHTML = "<p>🧹 Papelera vacía.</p>";
+          return;
+        }
+
+        contenedor.innerHTML = "";
+        archivos.forEach(nombre => {
+          const div = document.createElement("div");
+          div.className = "papelera-item";
+          div.innerHTML = `
+            <strong>${nombre}</strong><br><br>
+            <div class="botones">
+              <button class="ver-btn" onclick="ver('${nombre}', this)">👁️ Ver</button>
+              <button class="restaurar-btn" onclick="restaurar('${nombre}')">♻️ Restaurar</button>
+              <button class="eliminar-def-btn" onclick="eliminarDef('${nombre}')">❌ Borrar definitivo</button>
+            </div>
+            <div class="contenido"></div>
+          `;
+          contenedor.appendChild(div);
+        });
+      } catch {
+        contenedor.innerHTML = "<p style='color:red'>⚠️ Error al cargar papelera.</p>";
+      }
+    }
+
+    async function ver(nombre, boton) {
+      const div = boton.closest(".papelera-item").querySelector(".contenido");
+      if (div.style.display === "block") {
+        div.style.display = "none";
+        boton.textContent = "👁️ Ver";
+        return;
+      }
+      const resp = await fetch("papeleraevangelio/" + nombre);
+      div.innerHTML = `<pre>${await resp.text()}</pre>`;
+      div.style.display = "block";
+      boton.textContent = "🙈 Ocultar";
+    }
+
+    async function restaurar(nombre) {
+      if (!confirm(`¿Restaurar "${nombre}" desde papelera?`)) return;
+      const resp = await fetch("restaurar_respaldo.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ archivo: nombre, origen: "papelera" })
+      });
+      alert(await resp.text());
+      cargarPapelera();
+    }
+
+    async function eliminarDef(nombre) {
+      if (!confirm(`❌ ¿Eliminar permanentemente "${nombre}"?`)) return;
+      const resp = await fetch("eliminar_definitivo.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ archivo: nombre })
+      });
+      alert(await resp.text());
+      cargarPapelera();
+    }
+
+    cargarPapelera();
+  </script>
+</body>
+</html>
+

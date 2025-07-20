@@ -1,0 +1,358 @@
+/* ---------------- RESET ---------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* ---------------- ENCABEZADO ---------------- */
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-logo img {
+  height: 50px;
+  border-radius: 4px;
+}
+
+.nav-text .titulo {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.nav-text .subtitulo {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #333;
+  cursor: pointer;
+  display: none;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.main-nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+  color: #007B7F;
+}
+
+/* ---------------- FOOTER ---------------- */
+.site-footer {
+  background-color: #2c2c2c;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.95rem;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.site-footer p {
+  margin-bottom: 1rem;
+}
+
+.site-footer nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.site-footer a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: text-decoration 0.3s;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ---------------- CONTENIDO PRINCIPAL ---------------- */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.organigrama-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: #5e2a2a;
+  margin-top: 1rem;
+}
+
+.contenido {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+}
+
+.card {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.01);
+}
+
+.card h2 {
+  color: #782f2f;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.card ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.junta-directiva li {
+  margin-bottom: 1rem;
+  list-style-type: none;
+}
+
+.junta-directiva .nombre {
+  font-weight: bold;
+  color: #444;
+}
+
+.junta-directiva .cargo {
+  color: #777;
+  margin-left: 0.5rem;
+}
+
+/* ---------------- GALERÍA / CARRUSEL ---------------- */
+.galeria {
+  margin: 3rem auto;
+  text-align: center;
+  padding: 0 1rem;
+  max-width: 1000px;
+}
+
+.galeria h2 {
+  color: #5e2a2a;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.swiper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #5e2a2a;
+}
+
+.swiper-pagination-bullet {
+  background: #5e2a2a;
+}
+/* Carrusel Swiper */
+.swiper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.swiper-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  max-width: 100%;
+  max-height: 450px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Ajustes de controles */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #5e2a2a;
+}
+
+.swiper-pagination-bullet {
+  background: #5e2a2a;
+}
+
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .main-nav {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .main-nav.active {
+    display: flex;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+  }
+
+  .main-nav ul li {
+    width: 100%;
+  }
+
+  .main-nav ul li a {
+    display: block;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+  }
+
+  .contenido {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .swiper-slide img {
+    max-height: 250px;
+  }
+}
+/* Boton flotante de donar*/
+.donate-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #f7f4f5;
+  color: rgb(165, 6, 112);
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 999;
+}
+
+/* Emoji dentro del botón */
+.donate-button::before {
+  content: "❤️";
+  margin-right: 8px;
+}
+
+/* Efecto al pasar el mouse */
+.donate-button:hover {
+  background-color: #f7f4f4;
+  transform: scale(1.05);
+}
+
+/* Efecto al hacer clic */
+.donate-button:active {
+  transform: scale(0.95);
+}
+
+/* Responsive: botón más pequeño en móviles */
+@media (max-width: 600px) {
+  .donate-button {
+    padding: 10px 16px;
+    font-size: 14px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+
+
+

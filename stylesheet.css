@@ -1,0 +1,253 @@
+/* HERO PRINCIPAL CON FONDO */
+.hero-principal {
+  background: linear-gradient(rgba(0, 123, 127, 0.8), rgba(0, 123, 127, 0.6)),
+              url('./IMAGENES/HERO-BANNER.jpg') center/cover no-repeat;
+  color: #fff;
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.hero-contenido h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-contenido p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.btn-hero {
+  background-color: #ffffff;
+  color: #007B7F;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-hero:hover {
+  background-color: #eef9f9;
+}
+
+/* BLOQUES DE CONTENIDO */
+.bloque {
+  margin-bottom: 3rem;
+}
+
+.bloque h2 {
+  font-size: 1.8rem;
+  color: #007B7F;
+  margin-bottom: 1rem;
+}
+
+/* PRINCIPIOS VISUALMENTE CON ✔ */
+.principios {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.principios li::before {
+  content: "✔";
+  color: #007B7F;
+  margin-right: 0.5rem;
+}
+
+/* REDES SOCIALES */
+.redes-sociales {
+  background-color: #eef9f9;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.redes-sociales h2 {
+  font-size: 2rem;
+  color: #007B7F;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-social {
+  background-color: #007B7F;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-social:hover {
+  background-color: #005f63;
+}
+
+/* FORMULARIO VISUAL */
+.contacto h2 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.form-container button {
+  background-color: #007B7F;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  display: block;
+  margin: 1rem auto 0;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #005f63;
+}
+
+/* DONACIONES */
+.payment-section {
+  background-color: #f1f1f1;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.payment-section h2 {
+  color: #007B7F;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.datos-bancarios {
+  background-color: #fff;
+  padding: 1rem 2rem;
+  display: inline-block;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-top: 1rem;
+}
+
+/* ANIMACIÓN DE ENTRADA (AOS activa esto con scroll) */
+[data-aos] {
+  opacity: 0;
+  transition-property: opacity, transform;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+}
+.navbar {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1rem;
+  position: relative;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo img {
+  height: 45px;
+  margin-right: 10px;
+}
+
+.nav-text .titulo {
+  font-weight: 600;
+  font-size: 1rem;
+  display: block;
+}
+
+.nav-text .subtitulo {
+  font-size: 0.8rem;
+  color: #666;
+  display: block;
+}
+
+.menu-toggle {
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.main-nav {
+  display: none;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+
+.main-nav.active {
+  display: flex;
+}
+
+.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main-nav li {
+  margin: 0.5rem 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Puedes agregar una media query para escritorio si quieres que el menú se muestre horizontalmente */
+@media (min-width: 768px) {
+  .main-nav {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 0;
+  }
+
+  .main-nav li {
+    margin: 0 1rem;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+}

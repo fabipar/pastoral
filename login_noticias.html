@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión | Noticias</title>
+  <link rel="stylesheet" href="FORM_ENCAB_FOOT.css" />
+  <style>
+    body {
+      background-color: #eef9f9;
+      font-family: Arial, sans-serif;
+    }
+
+    main {
+      max-width: 400px;
+      margin: 120px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #007B7F;
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .toggle-password {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #007B7F;
+      cursor: pointer;
+      text-align: right;
+    }
+
+    button {
+      margin-top: 25px;
+      background-color: #007B7F;
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #005f63;
+    }
+
+    .mensaje {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .error {
+      color: #c62828;
+    }
+
+    .exito {
+      color: #2e7d32;
+    }
+
+    @media (max-width: 480px) {
+      main {
+        margin: 100px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h2>🔐 Acceso Noticias</h2>
+    <form id="loginForm">
+      <label for="usuario">Usuario:</label>
+      <input type="text" id="usuario" name="usuario" required />
+
+      <label for="clave">Contraseña:</label>
+      <input type="password" id="clave" name="clave" required />
+      <div class="toggle-password" onclick="togglePassword()">👁️ Mostrar/Ocultar</div>
+
+      <button type="submit">Iniciar Sesión</button>
+    </form>
+    <div id="mensaje" class="mensaje"></div>
+  </main>
+
+  <script>
+    function togglePassword() {
+      const clave = document.getElementById("clave");
+      clave.type = clave.type === "password" ? "text" : "password";
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const usuario = document.getElementById("usuario").value.trim();
+      const clave = document.getElementById("clave").value.trim();
+      const mensaje = document.getElementById("mensaje");
+
+      // Acceso con credenciales válidas
+      if (usuario === "admin_noticias" && clave === "noticias123") {
+        sessionStorage.setItem("autenticado", "true");
+        sessionStorage.setItem("rol", "admin_noticias");
+
+        mensaje.textContent = "✅ Acceso concedido. Redirigiendo...";
+        mensaje.className = "mensaje exito";
+
+        setTimeout(() => {
+          window.location.href = "editar_noticias.html";
+        }, 1200);
+      } else {
+        mensaje.textContent = "❌ Usuario o contraseña incorrectos.";
+        mensaje.className = "mensaje error";
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+

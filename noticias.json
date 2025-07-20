@@ -1,0 +1,17 @@
+[
+  {
+    "fecha": "2025-07-15",
+    "titulo": "Encuentro de comunidades en el suroriente",
+    "ubicacion": "San José del Guaviare",
+    "contenido": "La Pastoral Social organizó un encuentro con líderes comunitarios para fomentar la paz y el desarrollo sostenible en el territorio.",
+    "imagen": "IMAGENES_NOTICIAS/ejemplo1.jpg"
+  },
+  {
+    "fecha": "2025-07-10",
+    "titulo": "Jornada de salud en zonas rurales",
+    "ubicacion": "Puerto Rico - Meta",
+    "contenido": "Con apoyo de voluntarios y médicos, se ofrecieron servicios médicos gratuitos a más de 300 personas en áreas apartadas.",
+    "imagen": "IMAGENES_NOTICIAS/ejemplo2.jpg"
+  }
+]
+

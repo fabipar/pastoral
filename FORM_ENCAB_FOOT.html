@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="fabian leonardo paramo" />
+  <meta name="" content="Pastoral Social Regional Suroriente Colombiano - Misión, Visión y Principios" />
+  <title>PASTORAL SOCIAL REGIONAL SURORIENTE COLOMBIANO</title>
+  <link rel="icon" href="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" type="image/x-icon">  <link rel="stylesheet" href="FORM_ENCAB_FOOT.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Encabezado -->
+ <header class="navbar">
+    <div class="nav-logo">
+      <img src="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" alt="Logo">
+      <div class="nav-text">
+        <span class="titulo">Pastoral Social Regional</span><br>
+        <span class="subtitulo">Suroriente Colombiano</span>
+      </div>
+    </div>
+
+    <!-- Botón hamburguesa -->
+ <!-- Botón hamburguesa -->
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#INICIO">Inicio</a></li>
+          <li><a href="proyectos.html">Proyectos</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+          <li><a href="QUIENESSOMOS.html">Quienes Somos</a></li>
+          <li><a href="#DONACION">Donaciones</a></li>
+          <li><a href="#REDESSOCIALES">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+<!-- Botón corazón flotante -->
+ <a href="#DONACION" class="donate-button" aria-label="Donar ahora">
+    ❤️ Donar
+  </a>
+<!-- Fin de la sección Boton corazon flotante-->
+
+
+
+
+
+
+
+  <!-- Pie de página -->
+  <footer class="site-footer">
+    <p>&copy; 2025 Pastoral Social Suroriente Colombiano. Todos los derechos reservados.</p>
+    <nav>
+      <a href="#">Política de privacidad</a>
+      <a href="#">Términos de uso</a>
+    </nav>
+  </footer>
+
+  <!-- Script para navegación responsive -->
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav-menu');
+  const navLinks = nav.querySelectorAll('a');
+
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('activo');
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('activo');
+    });
+  });
+</script>
+<!-- Script de menú hamburguesa -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+
+    toggleBtn.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
