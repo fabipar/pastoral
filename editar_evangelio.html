@@ -3,13 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="fabian leonardo paramo" />
+  <meta name="description" content="Editar Evangelio - Pastoral Social Suroriente Colombiano" />
   <title>Editar Evangelio | Pastoral Social</title>
   <link rel="icon" href="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" type="image/x-icon">
   <link rel="stylesheet" href="FORM_ENCAB_FOOT.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    body {
+      background-color: #f9f9f4;
+      font-family: 'Inter', sans-serif;
+    }
+
     main {
       max-width: 900px;
-      margin: 120px auto 60px;
+      margin: 130px auto 60px;
       padding: 20px;
       background: #fff;
       border-radius: 12px;
@@ -86,7 +94,7 @@
 
     .logout {
       text-align: right;
-      margin: 10px;
+      margin: 10px 20px 0 0;
     }
 
     .logout a {
@@ -113,6 +121,7 @@
     }
   </script>
 
+  <!-- ENCABEZADO INSTITUCIONAL -->
   <header class="navbar">
     <div class="nav-logo">
       <img src="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" alt="Logo">
@@ -134,12 +143,15 @@
     </nav>
   </header>
 
-  <a href="#DONACION" class="donate-button">Donar</a>
+  <!-- BOTÓN DE DONAR FLOTANTE -->
+  <a href="#DONACION" class="donate-button" aria-label="Donar ahora">❤️ Donar</a>
 
+  <!-- BOTÓN CERRAR SESIÓN -->
   <div class="logout">
     <a href="#" onclick="cerrarSesion()">🔓 Cerrar sesión</a>
   </div>
 
+  <!-- FORMULARIO -->
   <main>
     <h1>📝 Editar Evangelio</h1>
     <form id="formEvangelio" enctype="multipart/form-data" method="POST">
@@ -158,66 +170,67 @@
     <div id="mensaje" class="mensaje"></div>
 
     <div class="preview">
-      <img id="previewImagen" src="" alt="Vista previa imagen" style="display: none;">
       <h2 id="previewTitulo"></h2>
       <p><strong>📅 Fecha:</strong> <span id="previewFecha"></span></p>
       <p id="previewContenido"></p>
     </div>
   </main>
 
+  <!-- PIE DE PÁGINA -->
   <footer class="site-footer">
     <p>&copy; 2025 Pastoral Social Suroriente Colombiano. Todos los derechos reservados.</p>
     <nav>
       <a href="#">Política de privacidad</a>
       <a href="#">Términos de uso</a>
-      <a href="#">ingresar</a>
     </nav>
   </footer>
 
-<script>
-  document.querySelector('.menu-toggle').onclick = () => {
-    document.querySelector('.main-nav').classList.toggle('active');
-  };
+  <!-- JS Funcionalidad -->
+  <script>
+    document.querySelector('.menu-toggle').onclick = () => {
+      document.querySelector('.main-nav').classList.toggle('active');
+    };
 
-  function cerrarSesion() {
-    sessionStorage.clear();
-    window.location.href = 'login_evangelio.html';
-  }
+    function cerrarSesion() {
+      sessionStorage.clear();
+      window.location.href = 'login_evangelio.html';
+    }
 
-  document.getElementById('formEvangelio').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    const mensajeDiv = document.getElementById('mensaje');
+    document.getElementById('formEvangelio').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const mensajeDiv = document.getElementById('mensaje');
 
-    fetch('guardar_evangelio.php', {
-      method: 'POST',
-      body: formData
-    })
-    .then(async res => {
-      const text = await res.text();
-      if (!res.ok) throw new Error(text);
-      mensajeDiv.innerHTML = text;
-      mensajeDiv.className = 'mensaje exito';
-      this.reset();
-      document.getElementById('previewImagen').style.display = 'none';
-    })
-    .catch(err => {
-      mensajeDiv.innerHTML = '❌<br><pre style="white-space: pre-wrap;">' + err.message + '</pre>';
-      mensajeDiv.className = 'mensaje error';
-      console.error("🚨 Error del servidor:", err.message);
+      fetch('guardar_evangelio.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(async res => {
+        const text = await res.text();
+        if (!res.ok) throw new Error(text);
+        mensajeDiv.innerHTML = text;
+        mensajeDiv.className = 'mensaje exito';
+        this.reset();
+        actualizarVistaPrevia();
+      })
+      .catch(err => {
+        mensajeDiv.innerHTML = '❌<br><pre style="white-space: pre-wrap;">' + err.message + '</pre>';
+        mensajeDiv.className = 'mensaje error';
+        console.error("🚨 Error del servidor:", err.message);
+      });
     });
-  });
 
-  const campos = ["fecha", "titulo", "contenido"];
-  campos.forEach(id => {
-    document.getElementById(id).addEventListener("input", actualizarVistaPrevia);
-  });
+    const campos = ["fecha", "titulo", "contenido"];
+    campos.forEach(id => {
+      document.getElementById(id).addEventListener("input", actualizarVistaPrevia);
+    });
 
-  function actualizarVistaPrevia() {
-    document.getElementById("previewTitulo").textContent = document.getElementById("titulo").value;
-    document.getElementById("previewFecha").textContent = document.getElementById("fecha").value;
-    document.getElementById("previewContenido").textContent = document.getElementById("contenido").value;
-  }
-</script>
+    function actualizarVistaPrevia() {
+      document.getElementById("previewTitulo").textContent = document.getElementById("titulo").value;
+      document.getElementById("previewFecha").textContent = document.getElementById("fecha").value;
+      document.getElementById("previewContenido").textContent = document.getElementById("contenido").value;
+    }
+  </script>
 </body>
 </html>
+

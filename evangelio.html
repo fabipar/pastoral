@@ -3,69 +3,190 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="fabian leonardo paramo" />
+  <meta name="description" content="Pastoral Social Regional Suroriente Colombiano - Evangelio Semanal" />
   <title>Evangelio Semanal | Pastoral Social</title>
+  <link rel="icon" href="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" type="image/x-icon">
   <link rel="stylesheet" href="FORM_ENCAB_FOOT.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    .evangelio {
-      max-width: 800px;
-      margin: 120px auto 60px;
-      padding: 30px;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    .evangelio h2 {
-      color: #00796b;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-
-    .evangelio p {
-      line-height: 1.6;
-      font-size: 18px;
+    body {
+      background: #f9f9f4;
+      font-family: 'Inter', sans-serif;
       color: #333;
     }
 
-    .evangelio .fecha {
-      text-align: center;
-      color: #555;
-      margin-bottom: 25px;
+    .container {
+      max-width: 900px;
+      margin: 130px auto 80px;
+      padding: 0 20px;
+    }
+
+    .evangelio-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      padding: 30px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .evangelio-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .evangelio-card h2 {
+      color: #2e7d32;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .evangelio-card .fecha {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 18px;
+    }
+
+    .evangelio-card .contenido {
+      font-size: 17px;
+      line-height: 1.6;
+      max-height: 180px;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .evangelio-card.expanded .contenido {
+      max-height: 1000px;
+    }
+
+    .ver-mas {
+      margin-top: 12px;
+      background: none;
+      border: none;
+      color: #007B7F;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0;
+      font-size: 15px;
+    }
+
+    .ver-mas:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 600px) {
-      .evangelio {
-        margin: 100px 10px 60px;
+      .container {
+        padding: 10px;
+      }
+
+      .evangelio-card {
         padding: 20px;
+      }
+
+      .evangelio-card h2 {
+        font-size: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <header-component></header-component>
+  <!-- ENCABEZADO INSTITUCIONAL -->
+  <header class="navbar">
+    <div class="nav-logo">
+      <img src="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" alt="Logo">
+      <div class="nav-text">
+        <span class="titulo">Pastoral Social Regional</span><br>
+        <span class="subtitulo">Suroriente Colombiano</span>
+      </div>
+    </div>
 
-  <main class="evangelio">
-    <h2 id="titulo"></h2>
-    <div class="fecha" id="fecha"></div>
-    <p id="contenido"></p>
-  </main>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
 
-  <footer-component></footer-component>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="proyectos.html">Proyectos</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="QUIENESSOMOS.html">Quienes Somos</a></li>
+        <li><a href="#DONACION">Donaciones</a></li>
+        <li><a href="#REDESSOCIALES">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <script src="componentes/encabezado.js"></script>
-  <script src="componentes/footer.js"></script>
+  <!-- BOTÓN DE DONAR FLOTANTE -->
+  <a href="#DONACION" class="donate-button" aria-label="Donar ahora">❤️ Donar</a>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container" id="listaEvangelios"></main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="site-footer">
+    <p>&copy; 2025 Pastoral Social Suroriente Colombiano. Todos los derechos reservados.</p>
+    <nav>
+      <a href="#">Política de privacidad</a>
+      <a href="#">Términos de uso</a>
+    </nav>
+  </footer>
+
+  <!-- SCRIPT PARA CARGAR EVANGELIOS -->
   <script>
-    fetch('evangelio.json')
-      .then(response => response.json())
+    fetch('evangelios.json')
+      .then(res => res.json())
       .then(data => {
-        document.getElementById('titulo').textContent = data.titulo;
-        document.getElementById('fecha').textContent = '📅 ' + data.fecha;
-        document.getElementById('contenido').textContent = data.contenido;
+        const contenedor = document.getElementById('listaEvangelios');
+        data.forEach((evangelio, index) => {
+          const card = document.createElement('div');
+          card.className = 'evangelio-card';
+
+          const contenidoCorto = evangelio.contenido.length > 400
+            ? evangelio.contenido.substring(0, 400) + '...'
+            : evangelio.contenido;
+
+          card.innerHTML = `
+            <h2>📖 ${evangelio.titulo}</h2>
+            <div class="fecha">📅 ${evangelio.fecha}</div>
+            <div class="contenido" id="contenido-${index}">${contenidoCorto}</div>
+            ${evangelio.contenido.length > 400 ? `<button class="ver-mas" onclick="toggleVerMas(${index}, \`${evangelio.contenido.replace(/`/g, '\\`')}\`)">Ver más</button>` : ''}
+          `;
+          contenedor.appendChild(card);
+        });
       })
-      .catch(error => {
-        document.getElementById('contenido').textContent = 'No se pudo cargar el evangelio.';
-        console.error('Error al cargar el evangelio:', error);
+      .catch(err => {
+        document.getElementById('listaEvangelios').innerHTML = '<p>No se pudo cargar el evangelio.</p>';
+        console.error('Error al cargar el evangelio:', err);
       });
+
+    function toggleVerMas(index, contenidoCompleto) {
+      const card = document.getElementById('contenido-' + index);
+      const button = card.nextElementSibling;
+
+      if (card.parentElement.classList.contains('expanded')) {
+        card.innerText = contenidoCompleto.substring(0, 400) + '...';
+        button.innerText = 'Ver más';
+        card.parentElement.classList.remove('expanded');
+      } else {
+        card.innerText = contenidoCompleto;
+        button.innerText = 'Ver menos';
+        card.parentElement.classList.add('expanded');
+      }
+    }
+  </script>
+
+  <!-- SCRIPT MENÚ RESPONSIVE -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtn = document.querySelector('.menu-toggle');
+      const mainNav = document.querySelector('.main-nav');
+
+      toggleBtn.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+      });
+    });
   </script>
 </body>
 </html>
+
+

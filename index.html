@@ -2,60 +2,28 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="author" content="fabian leonardo paramo" />
-  <title>Pastoral Social Regional Suroriente Colombiano</title>
-  <link rel="icon" href="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" type="image/x-icon">
-  <link rel="stylesheet" href="FORM_ENCAB_FOOT.css">
-  <link rel="stylesheet" href="stylesheet.css">
+  <meta name="description" content="Pastoral Social Regional Suroriente Colombiano - Misión, Visión y Principios" />
+  <title>PASTORAL SOCIAL REGIONAL SURORIENTE COLOMBIANO</title>
+  <link rel="icon" href="./" type="image/x-icon">
+  <link rel="stylesheet" href="FORM_ENCAB_FOOT.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-
-    .footer-edit-button {
-      margin-top: 10px;
-      text-align: center;
-    }
-
-    .footer-edit-button a {
-      background-color: #4caf50;
-      color: #fff;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      display: inline-block;
-      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .footer-edit-button a:hover {
-      background-color: #388e3c;
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .hidden {
-      display: none !important;
-    }
-  </style>
 </head>
 <body>
-  <!-- ENCABEZADO -->
+  <!-- Encabezado -->
   <header class="navbar">
-    <div class="navbar-container">
-      <div class="nav-logo">
-        <img src="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" alt="Logo">
-        <div class="nav-text">
-          <span class="titulo">Pastoral Social Regional</span><br>
-          <span class="subtitulo">Suroriente Colombiano</span>
-        </div>
+    <div class="nav-logo">
+      <img src="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" alt="Logo">
+      <div class="nav-text">
+        <span class="titulo">Pastoral Social Regional</span><br>
+        <span class="subtitulo">Suroriente Colombiano</span>
       </div>
-      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
     </div>
+
+    <!-- Botón hamburguesa -->
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+
     <nav class="main-nav">
       <ul>
         <li><a href="#INICIO">Inicio</a></li>
@@ -63,13 +31,208 @@
         <li><a href="noticias.html">Noticias</a></li>
         <li><a href="QUIENESSOMOS.html">Quienes Somos</a></li>
         <li><a href="#DONACION">Donaciones</a></li>
-        <li><a href="evangelio.html">Donaciones</a></li>
+        <li><a href="#REDESSOCIALES">Contacto</a></li>
+        <li id="link-editar-evangelio" class="hidden"><a href="editar_evangelio.html">✍️ Editar Evangelio</a></li>
+        <li id="link-editar-noticias" class="hidden"><a href="editar_noticias.html">📰 Editar Noticias</a></li>
+        <li id="cerrar-sesion" class="hidden"><a href="#" onclick="cerrarSesion()">🚪 Cerrar sesión</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- HERO PRINCIPAL -->
-  <section id="INICIO" class="hero-principal" data-aos="fade-up">
+  <!-- Botón corazón flotante -->
+  <a href="#DONACION" class="donate-button" aria-label="Donar ahora">
+    ❤️ Donar
+  </a>
+
+<!-- CONTENIDO PRINCIPAL -->
+<main class="contenido">
+  <style>
+    .contenido {
+      padding: 40px 20px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero-principal {
+      background: linear-gradient(to right, #008080, #20b2aa);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      animation: fadeIn 1s ease;
+    }
+
+    .hero-contenido h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .hero-contenido p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-hero {
+      background: #ffffff;
+      color: #008080;
+      padding: 12px 24px;
+      font-weight: bold;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-hero:hover {
+      background: #20b2aa;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .intro {
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-inline: auto;
+    }
+
+    .bloque {
+      background: #fff;
+      padding: 30px;
+      margin-bottom: 30px;
+      border-left: 8px solid #008080;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      animation: slideUp 1s ease;
+    }
+
+    .bloque h2 {
+      color: #008080;
+      margin-bottom: 10px;
+    }
+
+    .principios {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .principios li {
+      margin-bottom: 12px;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .principios li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: #008080;
+      font-weight: bold;
+    }
+
+    .contacto .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .contacto h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #008080;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .form-container input,
+    .form-container textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .form-container button {
+      background-color: #008080;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .form-container button:hover {
+      background-color: #006666;
+    }
+
+    .payment-section {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .payment-section .container {
+      background: #e0f7f7;
+      padding: 30px;
+      border-radius: 12px;
+    }
+
+    .payment-section h2 {
+      color: #008080;
+    }
+
+    .redes-sociales {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 15px;
+    }
+
+    .btn-social {
+      background: #008080;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .btn-social:hover {
+      background: #20b2aa;
+      transform: scale(1.1);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(60px); opacity: 0; }
+      to { transform: translateY(0px); opacity: 1; }
+    }
+  </style>
+
+  <section id="INICIO" class="hero-principal">
     <div class="hero-contenido">
       <h1>Transformamos realidades con fe y compromiso</h1>
       <p>Desde el Suroriente Colombiano, construimos una sociedad más justa y solidaria</p>
@@ -77,36 +240,32 @@
     </div>
   </section>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="contenido">
-    <p class="intro" data-aos="fade-in">
-      Transmitimos esta virtud al interactuar con respeto, honestidad y lealtad. Estamos comprometidos a ser transparentes tanto con nuestros aliados como con las comunidades.
-    </p>
+  <p class="intro">
+    Transmitimos esta virtud al interactuar con respeto, honestidad y lealtad. Estamos comprometidos a ser transparentes tanto con nuestros aliados como con las comunidades.
+  </p>
 
-    <section class="bloque" data-aos="fade-right">
-      <h2>Misión</h2>
-      <p>La pastoral social del suroriente colombiano, fundamentada en el evangelio...</p>
-    </section>
+  <section class="bloque">
+    <h2>Misión</h2>
+    <p>La pastoral social del suroriente colombiano, fundamentada en el evangelio...</p>
+  </section>
 
-    <section class="bloque" data-aos="fade-left">
-      <h2>Visión</h2>
-      <p>La región cuenta con una sociedad equitativa, justa, solidaria y participativa...</p>
-    </section>
+  <section class="bloque">
+    <h2>Visión</h2>
+    <p>La región cuenta con una sociedad equitativa, justa, solidaria y participativa...</p>
+  </section>
 
-    <section class="bloque" data-aos="fade-up">
-      <h2>Principios</h2>
-      <ul class="principios">
-        <li><strong>Bien Común:</strong> Pensar en el otro como base de la dignidad humana.</li>
-        <li><strong>Destino Universal:</strong> Compromiso con comunidades excluidas.</li>
-        <li><strong>Subsidiaridad:</strong> Promoción efectiva de personas y familias.</li>
-        <li><strong>Participación:</strong> Ciudadanía activa para la transformación social.</li>
-        <li><strong>Solidaridad:</strong> Deuda moral con la sociedad y las futuras generaciones.</li>
-      </ul>
-    </section>
-  </main>
+  <section class="bloque">
+    <h2>Principios</h2>
+    <ul class="principios">
+      <li><strong>Bien Común:</strong> Pensar en el otro como base de la dignidad humana.</li>
+      <li><strong>Destino Universal:</strong> Compromiso con comunidades excluidas.</li>
+      <li><strong>Subsidiaridad:</strong> Promoción efectiva de personas y familias.</li>
+      <li><strong>Participación:</strong> Ciudadanía activa para la transformación social.</li>
+      <li><strong>Solidaridad:</strong> Deuda moral con la sociedad y las futuras generaciones.</li>
+    </ul>
+  </section>
 
-  <!-- FORMULARIO DE CONTACTO -->
-  <section id="QUIENESSOMOS" class="contacto" data-aos="fade-up">
+  <section id="QUIENESSOMOS" class="contacto">
     <div class="container">
       <h2>Contáctanos</h2>
       <form class="form-container">
@@ -118,8 +277,7 @@
     </div>
   </section>
 
-  <!-- DONACIONES -->
-  <section id="DONACION" class="payment-section" data-aos="fade-right">
+  <section id="DONACION" class="payment-section">
     <div class="container">
       <h2>Apoya nuestros proyectos</h2>
       <p>Tu ayuda transforma vidas. Dona y sé parte del cambio.</p>
@@ -129,8 +287,7 @@
     </div>
   </section>
 
-  <!-- REDES SOCIALES -->
-  <section id="REDESSOCIALES" class="redes-sociales" data-aos="zoom-in">
+  <section id="REDESSOCIALES" class="redes-sociales">
     <div class="container">
       <h2>Síguenos en redes</h2>
       <div class="social-buttons">
@@ -140,43 +297,41 @@
       </div>
     </div>
   </section>
+</main>
 
-  <!-- BOTÓN FLOTANTE DE DONAR -->
-  <a href="#DONACION" class="donate-button">❤️ Donar</a>
-
-  <!-- FOOTER -->
+  <!-- Pie de página -->
   <footer class="site-footer">
     <p>&copy; 2025 Pastoral Social Suroriente Colombiano. Todos los derechos reservados.</p>
     <nav>
       <a href="#">Política de privacidad</a>
       <a href="#">Términos de uso</a>
     </nav>
-
-    <!-- Botón oculto que solo aparece si hay sesión -->
-    <div id="footer-edit-btn" class="footer-edit-button hidden">
-      <a href="editar.html">✍️ Ir a edición de Evangelio</a>
-    </div>
   </footer>
 
-  <!-- AOS Animaciones -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init({ duration: 1000 });</script>
-
-  <!-- Script de menú hamburguesa y control de sesión -->
+  <!-- Script para navegación responsive y sesión -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const toggleBtn = document.querySelector(".menu-toggle");
-      const nav = document.querySelector(".main-nav");
-      toggleBtn.addEventListener("click", () => {
-        nav.classList.toggle("active");
+      const toggleBtn = document.querySelector('.menu-toggle');
+      const mainNav = document.querySelector('.main-nav');
+      toggleBtn.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
       });
 
-      // Mostrar botón de edición si el usuario está autenticado
-      const botonEdicion = document.getElementById("footer-edit-btn");
-      if (sessionStorage.getItem("autenticado") === "true") {
-        botonEdicion.classList.remove("hidden");
+      const rol = sessionStorage.getItem("rol");
+      if (rol === "admin_evangelio") {
+        document.getElementById("link-editar-evangelio").classList.remove("hidden");
+        document.getElementById("cerrar-sesion").classList.remove("hidden");
+      }
+      if (rol === "admin_noticias") {
+        document.getElementById("link-editar-noticias").classList.remove("hidden");
+        document.getElementById("cerrar-sesion").classList.remove("hidden");
       }
     });
+
+    function cerrarSesion() {
+      sessionStorage.clear();
+      location.reload();
+    }
   </script>
 </body>
 </html>
