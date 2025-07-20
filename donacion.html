@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="fabian leonardo paramo" />
+  <title>Donaciones | Pastoral Social</title>
+  <link rel="icon" href="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" type="image/x-icon">
+  <link rel="stylesheet" href="FORM_ENCAB_FOOT.css" />
+  <link rel="stylesheet" href="donacion.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    /* Submenú */
+    .has-submenu {
+      position: relative;
+    }
+
+    .has-submenu .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      display: none;
+      list-style: none;
+      margin: 0;
+      padding: 0.5rem 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 999;
+      min-width: 180px;
+    }
+
+    .has-submenu:hover .submenu {
+      display: block;
+    }
+
+    .submenu li a {
+      display: block;
+      padding: 0.6rem 1rem;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .submenu li a:hover {
+      background-color: #f0f0f0;
+      color: #007B7F;
+    }
+
+    @media (max-width: 768px) {
+      .has-submenu .submenu {
+        position: static;
+        background-color: transparent;
+        box-shadow: none;
+      }
+      .submenu li a {
+        padding-left: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header class="navbar">
+    <div class="nav-logo">
+      <img src="./IMAGENES_PAGINA/LOGO PATORAL AUTORIZADO EDITADO.png" alt="Logo">
+      <div class="nav-text">
+        <span class="titulo">Pastoral Social Regional</span><br>
+        <span class="subtitulo">Suroriente Colombiano</span>
+      </div>
+    </div>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html#PROYECTOS">Proyectos</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li class="has-submenu">
+          <a href="#QUIENESSOMOS">Quienes Somos ▾</a>
+          <ul class="submenu">
+            <li><a href="index.html#mision">Misión</a></li>
+            <li><a href="index.html#vision">Visión</a></li>
+            <li><a href="index.html#principios">Principios</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#DONACION">Donaciones</a></li>
+        <li><a href="index.html#REDESSOCIALES">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Botón flotante de donar -->
+  <a href="#donacion" class="donate-button" aria-label="Donar ahora">❤️ Donar</a>
+
+  <!-- SECCIÓN DONACIÓN -->
+  <section id="DONACION" class="payment-section">
+    <div class="container">
+      <h2>Donar para los proyectos de Pastoral Social</h2>
+      <p>Tu contribución es esencial para continuar con los proyectos que transforman vidas.</p>
+      <div class="seccion-donacion">
+        <h1>Realiza una Donación</h1>
+        <p class="mensaje-donacion">Ayuda a una familia Colombiana a tener una mejor vida.</p>
+        <div class="datos-bancarios">
+          <p><strong>Banco:</strong> Caja Social</p>
+          <p><strong>Tipo de cuenta:</strong> Ahorros</p>
+          <p><strong>Número de cuenta:</strong>
+            <span class="cuenta-con-reloj">
+              <span class="reloj-icono">⏱️</span>
+              <span class="cuenta-animada">24050743036</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="payment-options">
+        <div class="payment-method">
+          <label for="amount">Monto a donar:</label>
+          <input type="number" id="amount" name="amount" placeholder="Ej. 100" required>
+        </div>
+        <div class="payment-method">
+          <label for="payment-method">Método de pago:</label>
+          <select id="payment-method" name="payment-method" required>
+            <option value="credit-card">Tarjeta de Crédito</option>
+            <option value="paypal">PayPal</option>
+            <option value="bank-transfer">Transferencia Bancaria</option>
+          </select>
+        </div>
+        <button class="btn-primary" onclick="confirmarDonacion()">Pagar Ahora</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="site-footer" id="footer">
+    <p>&copy; 2025 Pastoral Social Suroriente Colombiano. Todos los derechos reservados.</p>
+    <nav>
+      <a href="#">Política de privacidad</a>
+      <a href="#">Términos de uso</a>
+    </nav>
+  </footer>
+
+  <!-- JS Menú y Confirmación -->
+  <script>
+    // Menú hamburguesa
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    toggleBtn.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+    });
+
+    // Confirmación de donación
+    function confirmarDonacion() {
+      const monto = document.getElementById('amount').value;
+      const metodo = document.getElementById('payment-method').value;
+      if (monto && metodo) {
+        alert(`Gracias por tu donación de $${monto} por ${metodo.replace('-', ' ')}.`);
+      } else {
+        alert("Por favor completa todos los campos para realizar tu donación.");
+      }
+    }
+  </script>
+
+</body>
+</html>

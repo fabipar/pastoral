@@ -1,0 +1,268 @@
+/* DONACIONES */
+.payment-section {
+  background-color: #f4f8f7;
+  padding: 3rem 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  color: #083C2D;
+}
+
+.payment-section .container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.payment-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #083C2D;
+}
+
+.payment-section p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.seccion-donacion h1 {
+  font-size: 1.5rem;
+  color: #007B7F;
+  margin-bottom: 0.5rem;
+}
+
+.mensaje-donacion {
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.cuenta-con-reloj {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  color: #007B7F;
+  animation: cronometro 1.2s infinite;
+}
+
+.reloj-icono {
+  font-size: 1.2rem;
+  animation: rotar-reloj 2s ease-in-out infinite;
+}
+
+.payment-options {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.payment-method input,
+.payment-method textarea {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: #007B7F;
+  color: #fff;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #005f62;
+}
+
+/* Animaciones */
+@keyframes cronometro {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.07);
+  }
+}
+
+@keyframes rotar-reloj {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+/* Estilo base */
+.payment-section {
+  background: linear-gradient(180deg, #f0fdfa 0%, #ffffff 100%);
+  padding: 60px 20px;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+}
+
+.payment-section h2 {
+  text-align: center;
+  font-size: 30px;
+  color: #007B7F;
+  margin-bottom: 10px;
+  animation: fadeInDown 0.8s ease-in-out;
+}
+
+.payment-section > p {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 16px;
+  color: #555;
+  animation: fadeInDown 1s ease-in-out;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  animation: fadeIn 1s ease;
+}
+
+/* Tarjeta de donación */
+.seccion-donacion {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 123, 127, 0.12);
+  margin-bottom: 40px;
+  transition: transform 0.3s ease;
+}
+
+.seccion-donacion:hover {
+  transform: translateY(-4px);
+}
+
+.seccion-donacion h1 {
+  font-size: 24px;
+  color: #2e7d32;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.mensaje-donacion {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.cuenta-con-reloj {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e7f6f6;
+  padding: 12px 20px;
+  border-radius: 12px;
+  margin: 16px auto;
+  width: fit-content;
+  font-size: 16px;
+  color: #007B7F;
+  font-weight: bold;
+  gap: 10px;
+}
+
+.reloj-icono {
+  font-size: 22px;
+}
+
+/* Formulario */
+.payment-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.payment-method label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+  color: #007B7F;
+}
+
+.payment-method input,
+.payment-method textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  transition: border-color 0.3s;
+  background-color: #fafafa;
+}
+
+.payment-method input:focus,
+.payment-method textarea:focus {
+  border-color: #007B7F;
+  outline: none;
+  background-color: #fff;
+}
+
+/* Botón */
+.btn-primary {
+  background: #007B7F;
+  color: #fff;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #005f63;
+  transform: scale(1.03);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .seccion-donacion {
+    padding: 20px;
+  }
+
+  .payment-section h2 {
+    font-size: 24px;
+  }
+
+  .cuenta-con-reloj {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}
+
