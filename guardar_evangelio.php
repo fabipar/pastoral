@@ -1,32 +1,36 @@
 <?php
-$data = json_decode(file_get_contents("php://input"), true);
+// Ruta del archivo principal
+$archivo = 'evangelio.json';
+$respaldoDir = 'respaldo_evangelio';
 
-if (!isset($data["fecha"], $data["titulo"], $data["contenido"])) {
-  http_response_code(400);
-  echo "Faltan campos requeridos.";
-  exit;
+// Crear carpeta de respaldo si no existe
+if (!file_exists($respaldoDir)) {
+    mkdir($respaldoDir, 0777, true);
 }
 
-$evangelio = [
-  "fecha" => $data["fecha"],
-  "titulo" => $data["titulo"],
-  "contenido" => $data["contenido"]
-];
+// Recibir los datos del formulario
+$fecha = $_POST['fecha'] ?? '';
+$titulo = $_POST['titulo'] ?? '';
+$contenido = $_POST['contenido'] ?? '';
 
-// Guardar archivo principal
-file_put_contents("evangelio.json", json_encode($evangelio, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+if ($fecha && $titulo && $contenido) {
+    // Respaldar el archivo actual si existe
+    if (file_exists($archivo)) {
+        $timestamp = date('Ymd_His');
+        copy($archivo, "$respaldoDir/evangelio_$timestamp.json");
+    }
 
-// Crear respaldo con fecha y hora
-if (!is_dir("respaldoevangelio")) {
-  mkdir("respaldoevangelio", 0777, true);
+    // Guardar los nuevos datos
+    $datos = [
+        'fecha' => $fecha,
+        'titulo' => $titulo,
+        'contenido' => $contenido
+    ];
+
+    file_put_contents($archivo, json_encode($datos, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    echo "✅ Evangelio actualizado correctamente.";
+} else {
+    echo "❌ Todos los campos son obligatorios.";
 }
-
-$timestamp = date("Ymd_His");
-$respaldoNombre = "evangelio_$timestamp.json";
-file_put_contents("respaldoevangelio/$respaldoNombre", json_encode($evangelio, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-
-echo "✅ Evangelio guardado y respaldo creado como '$respaldoNombre'.";
 ?>
-
-
 

@@ -2,148 +2,222 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Acceso Evangelio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Editar Evangelio | Pastoral Social</title>
+  <link rel="icon" href="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" type="image/x-icon">
+  <link rel="stylesheet" href="FORM_ENCAB_FOOT.css" />
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #eafafc;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    main {
+      max-width: 900px;
+      margin: 120px auto 60px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
-    .login-box {
-      background: #ffffff;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 400px;
+    h1 {
       text-align: center;
-    }
-
-    .login-box h2 {
-      color: #00796b;
+      color: #007B7F;
       margin-bottom: 30px;
-      font-size: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
     }
 
     label {
-      display: block;
-      text-align: left;
-      margin-bottom: 6px;
       font-weight: 600;
+      display: block;
+      margin-top: 20px;
       color: #333;
     }
 
-    input[type="password"],
-    input[type="text"] {
+    input[type="text"],
+    input[type="date"],
+    textarea {
       width: 100%;
       padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
       border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 8px;
       font-size: 16px;
-    }
-
-    .mostrar-contrasena {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      font-size: 14px;
-      color: #00796b;
-      margin-bottom: 20px;
-      cursor: pointer;
-    }
-
-    .mostrar-contrasena input {
-      margin-right: 6px;
-      cursor: pointer;
     }
 
     button {
-      background-color: #00796b;
+      margin-top: 25px;
+      background-color: #007B7F;
       color: white;
-      padding: 14px;
       border: none;
-      border-radius: 8px;
+      padding: 14px 20px;
+      border-radius: 10px;
+      cursor: pointer;
       font-size: 16px;
       width: 100%;
-      font-weight: 600;
-      cursor: pointer;
     }
 
     button:hover {
-      background-color: #005b4f;
+      background-color: #005f63;
+    }
+
+    .mensaje {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .exito {
+      color: #2e7d32;
     }
 
     .error {
-      color: #e53935;
-      margin-top: 15px;
-      font-size: 14px;
-      display: none;
+      color: #c62828;
+    }
+
+    .preview {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #eef9f9;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .preview img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .logout {
+      text-align: right;
+      margin: 10px;
+    }
+
+    .logout a {
+      color: #c62828;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        margin: 100px 10px 60px;
+        padding: 16px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="login-box">
-    <h2>🔒 Acceso Evangelio</h2>
-    <form onsubmit="return validarLogin(event)">
-      <label for="clave">Contraseña:</label>
-      <input type="password" id="clave" required />
-
-      <div class="mostrar-contrasena">
-        <input type="checkbox" id="mostrar" />
-        <label for="mostrar">Mostrar/Ocultar</label>
-      </div>
-
-      <button type="submit">Iniciar Sesión</button>
-      <div id="error" class="error">❌ Contraseña incorrecta.</div>
-    </form>
-  </div>
-
+  <!-- Protección por sesión -->
   <script>
-    document.getElementById("mostrar").addEventListener("change", function () {
-      const clave = document.getElementById("clave");
-      clave.type = this.checked ? "text" : "password";
-    });
-
-    function validarLogin(e) {
-      e.preventDefault();
-      const clave = document.getElementById("clave").value;
-      const error = document.getElementById("error");
-
-      if (clave === "Pastoral2025") {
-        sessionStorage.setItem("autenticado", "true");
-        sessionStorage.setItem("rol", "admin");
-        window.location.href = "editar_evangelio.html";
-      } else {
-        error.style.display = "block";
-      }
+    const autenticado = sessionStorage.getItem('autenticado');
+    const rol = sessionStorage.getItem('rol');
+    if (autenticado !== 'true' || rol !== 'admin_evangelio') {
+      window.location.href = 'login_evangelio.html';
     }
   </script>
+
+  <header class="navbar">
+    <div class="nav-logo">
+      <img src="./IMAGENES/LOGO PATORAL AUTORIZADO EDITADO.png" alt="Logo">
+      <div class="nav-text">
+        <span class="titulo">Pastoral Social Regional</span><br>
+        <span class="subtitulo">Suroriente Colombiano</span>
+      </div>
+    </div>
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="proyectos.html">Proyectos</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="QUIENESSOMOS.html">Quienes Somos</a></li>
+        <li><a href="#DONACION">Donaciones</a></li>
+        <li><a href="#REDESSOCIALES">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <a href="#DONACION" class="donate-button">Donar</a>
+
+  <div class="logout">
+    <a href="#" onclick="cerrarSesion()">🔓 Cerrar sesión</a>
+  </div>
+
+  <main>
+    <h1>📝 Editar Evangelio</h1>
+    <form id="formEvangelio" enctype="multipart/form-data" method="POST">
+      <label for="fecha">📅 Fecha:</label>
+      <input type="date" id="fecha" name="fecha" required />
+
+      <label for="titulo">📰 Título:</label>
+      <input type="text" id="titulo" name="titulo" required />
+
+      <label for="contenido">📑 Contenido:</label>
+      <textarea id="contenido" name="contenido" rows="6" required></textarea>
+
+      <button type="submit">💾 Guardar Evangelio</button>
+    </form>
+
+    <div id="mensaje" class="mensaje"></div>
+
+    <div class="preview">
+      <img id="previewImagen" src="" alt="Vista previa imagen" style="display: none;">
+      <h2 id="previewTitulo"></h2>
+      <p><strong>📅 Fecha:</strong> <span id="previewFecha"></span></p>
+      <p id="previewContenido"></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Pastoral Social Suroriente Colombiano. Todos los derechos reservados.</p>
+    <nav>
+      <a href="#">Política de privacidad</a>
+      <a href="#">Términos de uso</a>
+      <a href="#">ingresar</a>
+    </nav>
+  </footer>
+
+<script>
+  document.querySelector('.menu-toggle').onclick = () => {
+    document.querySelector('.main-nav').classList.toggle('active');
+  };
+
+  function cerrarSesion() {
+    sessionStorage.clear();
+    window.location.href = 'login_evangelio.html';
+  }
+
+  document.getElementById('formEvangelio').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const mensajeDiv = document.getElementById('mensaje');
+
+    fetch('guardar_evangelio.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(async res => {
+      const text = await res.text();
+      if (!res.ok) throw new Error(text);
+      mensajeDiv.innerHTML = text;
+      mensajeDiv.className = 'mensaje exito';
+      this.reset();
+      document.getElementById('previewImagen').style.display = 'none';
+    })
+    .catch(err => {
+      mensajeDiv.innerHTML = '❌<br><pre style="white-space: pre-wrap;">' + err.message + '</pre>';
+      mensajeDiv.className = 'mensaje error';
+      console.error("🚨 Error del servidor:", err.message);
+    });
+  });
+
+  const campos = ["fecha", "titulo", "contenido"];
+  campos.forEach(id => {
+    document.getElementById(id).addEventListener("input", actualizarVistaPrevia);
+  });
+
+  function actualizarVistaPrevia() {
+    document.getElementById("previewTitulo").textContent = document.getElementById("titulo").value;
+    document.getElementById("previewFecha").textContent = document.getElementById("fecha").value;
+    document.getElementById("previewContenido").textContent = document.getElementById("contenido").value;
+  }
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
